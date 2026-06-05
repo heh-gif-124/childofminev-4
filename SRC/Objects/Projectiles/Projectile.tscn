@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dtqfh2cvae0qv"]
+
+[ext_resource type="Script" uid="uid://ky8fmq4fp14s" path="res://SRC/Objects/Projectiles/COmponents/move.gd" id="1_qf8o0"]
+[ext_resource type="Script" uid="uid://fnwnh1dvkbvg" path="res://SRC/Objects/Projectiles/COmponents/Collide.gd" id="2_bihh0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bihh0"]
+
+[node name="Projectile" type="Node2D" unique_id=1568027788]
+
+[node name="move_handler" type="Node" parent="." unique_id=538260769]
+script = ExtResource("1_qf8o0")
+metadata/_custom_type_script = "uid://ky8fmq4fp14s"
+
+[node name="Collider_Handler" type="Area2D" parent="." unique_id=1965135541]
+script = ExtResource("2_bihh0")
+metadata/_custom_type_script = "uid://fnwnh1dvkbvg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider_Handler" unique_id=1497484637]
+shape = SubResource("RectangleShape2D_bihh0")

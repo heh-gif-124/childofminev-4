@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://c7ee1sxr6i0ga"]
+
+[ext_resource type="Texture2D" uid="uid://dyo85s1j55sqr" path="res://Sprites/Sprites/staff/Staff.png" id="1_2jra1"]
+[ext_resource type="Script" uid="uid://rgrw6bdfw6sc" path="res://SRC/Staff/staff.gd" id="1_yysl8"]
+[ext_resource type="Script" uid="uid://dn4gee5rau3h1" path="res://SRC/Staff/FiringHandler.gd" id="2_7o8ew"]
+[ext_resource type="PackedScene" uid="uid://dtqfh2cvae0qv" path="res://SRC/Objects/Projectiles/Projectile.tscn" id="4_bsmw6"]
+[ext_resource type="Script" uid="uid://bmfqgg2fl4er5" path="res://SRC/Staff/FollowingHandler.gd" id="4_hdoug"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o8ew"]
+atlas = ExtResource("1_2jra1")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yysl8"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7o8ew")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Staff" type="Node2D" unique_id=493018424]
+script = ExtResource("1_yysl8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1283397820]
+position = Vector2(16, 0)
+sprite_frames = SubResource("SpriteFrames_yysl8")
+animation = &"new_animation"
+
+[node name="firing_handler" type="Node" parent="." unique_id=1693439685 node_paths=PackedStringArray("pivot")]
+script = ExtResource("2_7o8ew")
+projectile = ExtResource("4_bsmw6")
+pivot = NodePath("../Marker2D")
+metadata/_custom_type_script = "uid://dn4gee5rau3h1"
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1027228966]
+position = Vector2(48, 0)
+
+[node name="following_handler" type="Node" parent="." unique_id=419155830]
+script = ExtResource("4_hdoug")
+metadata/_custom_type_script = "uid://bmfqgg2fl4er5"

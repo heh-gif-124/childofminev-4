@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bm1vxsa8tfpyx"]
+
+[ext_resource type="Script" uid="uid://coi0257k1npv0" path="res://SRC/Player/player.gd" id="1_8qye1"]
+[ext_resource type="Script" uid="uid://cquc550nrg60k" path="res://SRC/Player/PlayerMovement.gd" id="1_unxx3"]
+[ext_resource type="Script" uid="uid://d33p2sr3vrvps" path="res://SRC/Player/JumpHandler.gd" id="2_n2pi2"]
+[ext_resource type="Texture2D" uid="uid://t2jyp4bejvkh" path="res://Sprites/Sprites/Player/Player_idle.png" id="3_nswup"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_unxx3"]
+radius = 15.0
+height = 62.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qye1"]
+atlas = ExtResource("3_nswup")
+region = Rect2(0, 0, 51, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qpdg2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qye1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=927071234 groups=["Player"]]
+script = ExtResource("1_8qye1")
+
+[node name="movement_handler" type="Node" parent="." unique_id=1322329331]
+script = ExtResource("1_unxx3")
+metadata/_custom_type_script = "uid://cquc550nrg60k"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1477249815]
+shape = SubResource("CapsuleShape2D_unxx3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=248135608]
+texture_filter = 3
+sprite_frames = SubResource("SpriteFrames_qpdg2")
+
+[node name="Ghost_Timer" type="Timer" parent="." unique_id=182034078]
+wait_time = 0.05
+autostart = true
+
+[node name="jump_handler" type="Node" parent="." unique_id=313076819]
+script = ExtResource("2_n2pi2")
+metadata/_custom_type_script = "uid://d33p2sr3vrvps"
+
+[connection signal="timeout" from="Ghost_Timer" to="movement_handler" method="_on_ghost_timer_timeout"]

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dl8seb3b672kd"]
+
+[ext_resource type="Texture2D" uid="uid://byxb3mnbivdyp" path="res://Sprites/Sprites/Objects/Reverie.png" id="1_3tb1v"]
+[ext_resource type="Script" uid="uid://pl2xjbk5cmmo" path="res://SRC/Cores/Interact.gd" id="2_uc8ba"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uc8ba"]
+size = Vector2(32.000004, 41.800003)
+
+[node name="Reverie" type="Node2D" unique_id=1697064865]
+z_index = -1
+scale = Vector2(2.5, 2.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1212261786]
+position = Vector2(0, -32)
+texture = ExtResource("1_3tb1v")
+
+[node name="Interact_handler" type="Area2D" parent="." unique_id=1533348871]
+script = ExtResource("2_uc8ba")
+metadata/_custom_type_script = "uid://pl2xjbk5cmmo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact_handler" unique_id=1442460829]
+position = Vector2(0, -20.699995)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_uc8ba")
+debug_color = Color(1.2032688e-06, 0.6333171, 0.44533712, 0.41960785)
+
+[node name="Label" type="Label" parent="Interact_handler" unique_id=1391706492]
+offset_left = -44.799995
+offset_top = -57.6
+offset_right = 44.200005
+offset_bottom = -34.6
+text = "[E] Interact "
