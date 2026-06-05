@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://djvkrooccl12i"]
+
+[ext_resource type="Texture2D" uid="uid://dpxjo42gat32c" path="res://Sprites/Sprites/misc/Card.png" id="1_qxprf"]
+[ext_resource type="Texture2D" uid="uid://c54g55r2tr5tt" path="res://Sprites/Sprites/misc/Icons/SlashMagic.png" id="2_qvwfc"]
+
+[node name="Card" type="TextureRect" unique_id=247006259]
+texture = ExtResource("1_qxprf")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=536197344]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = 29.0
+offset_right = 44.0
+offset_bottom = 117.0
+grow_horizontal = 2
+texture = ExtResource("2_qvwfc")
+
+[node name="Label" type="Label" parent="." unique_id=1828601413]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.5
+offset_top = -38.0
+offset_right = 95.5
+offset_bottom = 2.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 29
+text = "SLASH MAGIC"
+horizontal_alignment = 1

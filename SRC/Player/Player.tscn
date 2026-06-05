@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://d33p2sr3vrvps" path="res://SRC/Player/JumpHandler.gd" id="2_n2pi2"]
 [ext_resource type="Texture2D" uid="uid://t2jyp4bejvkh" path="res://Sprites/Sprites/Player/Player_idle.png" id="3_nswup"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vkgy7"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_unxx3"]
 radius = 15.0
 height = 62.0
@@ -25,6 +27,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=927071234 groups=["Player"]]
+material = SubResource("ShaderMaterial_vkgy7")
 script = ExtResource("1_8qye1")
 
 [node name="movement_handler" type="Node" parent="." unique_id=1322329331]
@@ -36,6 +39,7 @@ shape = SubResource("CapsuleShape2D_unxx3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=248135608]
 texture_filter = 3
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_qpdg2")
 
 [node name="Ghost_Timer" type="Timer" parent="." unique_id=182034078]
