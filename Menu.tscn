@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://byg6tkcrd6hbl"]
+
+[ext_resource type="Texture2D" uid="uid://cqgaf3y6l81wq" path="res://Sprites/tilemaps/logo.png" id="1_uubjt"]
+
+[node name="Control" type="Control" unique_id=137426827]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=336542155]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.13977
+offset_top = -183.0
+offset_right = 236.13977
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_uubjt")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=286890308]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -116.0
+offset_right = 20.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="HBoxContainer" unique_id=266027476]
+layout_mode = 2
+text = "PLAY"
+
+[node name="Button2" type="Button" parent="HBoxContainer" unique_id=83086267]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="HBoxContainer" unique_id=2123662056]
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="HBoxContainer" unique_id=1356314408]
+layout_mode = 2
+
+[node name="Button5" type="Button" parent="HBoxContainer" unique_id=533205336]
+layout_mode = 2

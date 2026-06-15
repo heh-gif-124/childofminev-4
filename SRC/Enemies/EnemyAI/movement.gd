@@ -1,0 +1,23 @@
+extends CharacterBody2D
+
+var hp = 10
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+@onready var player = get_parent().find_child("Player")
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	if $state_handler.current_state == "Walk":
+		var dir_to_target = (player.global_position - global_position).normalized()
+		velocity.x = dir_to_target.x * SPEED
+	elif $state_handler.current_state == "Idle":
+		velocity.x = 0
+	
+	if hp <= 0:
+		queue_free()
+	move_and_slide()
+
+func _Hurt(dmg):
+	hp -= dmg

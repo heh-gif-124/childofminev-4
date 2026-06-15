@@ -4,5 +4,9 @@ class_name Collider_Handler
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	body_entered.connect(func(body):
+		var calculate = Globals.calculate_final_damage(3.5,parent.p_crit,parent.p_crit_dmg)
+		print(calculate)
+		if body.get_parent().has_method("_Hurt"):
+			body.get_parent()._Hurt(calculate["final"])
 		parent.queue_free()
 		)

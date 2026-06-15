@@ -1,7 +1,7 @@
 extends HBoxContainer
 
 @onready var player = $"../../../../Player"
-
+@onready var staff = $"../../../../Staff"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -10,6 +10,8 @@ func _physics_process(delta: float) -> void:
 	#HP Bar handler
 	$VBoxContainer/HealthBar.max_value=player.max_hp
 	$VBoxContainer/HealthBar.value=player.hp
+	$VBoxContainer/EnergyBar.max_value=staff.max_energy
+	$VBoxContainer/EnergyBar.value=staff.energy
 	#SP Bar handler
 	
 	if player.hp <= 60:

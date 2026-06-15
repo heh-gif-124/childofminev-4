@@ -354,9 +354,7 @@ color = Color(0.08235294, 0.08235294, 0.08235294, 1)
 [node name="Marker2D" type="Marker2D" parent="." unique_id=440903451]
 position = Vector2(-4576, -32)
 
-[node name="EnemySpawner" type="Timer" parent="." unique_id=464546854 node_paths=PackedStringArray("player")]
-wait_time = 5.0
+[node name="EnemySpawner" type="Timer" parent="." unique_id=464546854]
 autostart = true
 script = ExtResource("10_wkp8b")
-player = NodePath("../Player")
 metadata/_custom_type_script = "uid://c578od588wwrt"

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://xqb1134iuxu"]
+
+[ext_resource type="Script" uid="uid://c8j1t7mu5tuyh" path="res://SRC/Objects/Projectiles/COmponents/base.gd" id="1_5u7af"]
+[ext_resource type="Script" uid="uid://ky8fmq4fp14s" path="res://SRC/Objects/Projectiles/COmponents/move.gd" id="2_tdgn3"]
+[ext_resource type="Texture2D" uid="uid://c6713uet3ynoh" path="res://Sprites/Sprites/staff/Projectile.png" id="4_5fwav"]
+
+[node name="Projectile" type="Node2D" unique_id=1568027788]
+script = ExtResource("1_5u7af")
+
+[node name="move_handler" type="Node" parent="." unique_id=538260769]
+script = ExtResource("2_tdgn3")
+metadata/_custom_type_script = "uid://ky8fmq4fp14s"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=337197745]
+rotation = 1.5707964
+texture = ExtResource("4_5fwav")

@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b6ud8cm241sxb"]
+
+[ext_resource type="Texture2D" uid="uid://cex1uv8ns6e31" path="res://Sprites/Sprites/Enemies/Turret/Turret_head.png" id="1_025xf"]
+[ext_resource type="Script" uid="uid://c5ggc6ungb13p" path="res://SRC/Enemies/EnemyAI/VoidWorm/void_worm.gd" id="1_43tjy"]
+[ext_resource type="Texture2D" uid="uid://choi2e6qw1do2" path="res://Sprites/Sprites/Enemies/Turret/TUrret_body.png" id="1_l626n"]
+[ext_resource type="PackedScene" uid="uid://xqb1134iuxu" path="res://SRC/Objects/Projectiles/EnemyProjectile.tscn" id="2_sxvlh"]
+[ext_resource type="Script" uid="uid://dkvtknpa8lsea" path="res://SRC/Enemies/EnemyAI/DetectRange.gd" id="3_wx21a"]
+[ext_resource type="Script" uid="uid://b86shoce52ein" path="res://SRC/Enemies/EnemyAI/State_handler.gd" id="4_nwq2x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wx21a"]
+radius = 349.00143
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sxvlh"]
+radius = 18.0
+height = 242.0
+
+[node name="VoidWorm" type="Node2D" unique_id=1306699896]
+z_index = -2
+script = ExtResource("1_43tjy")
+Bullet = ExtResource("2_sxvlh")
+
+[node name="Head" type="Sprite2D" parent="." unique_id=1413482602]
+z_index = 1
+position = Vector2(0, -101)
+rotation = 1.5707964
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_025xf")
+
+[node name="Marker2D" type="Marker2D" parent="Head" unique_id=990038531]
+position = Vector2(34.166664, -3.8146973e-06)
+
+[node name="Body" type="Sprite2D" parent="." unique_id=1291924749]
+position = Vector2(0, -20)
+scale = Vector2(1.9, 1.9)
+texture = ExtResource("1_l626n")
+
+[node name="range_detector" type="Area2D" parent="." unique_id=491224610 node_paths=PackedStringArray("state_handler_used")]
+script = ExtResource("3_wx21a")
+state_handler_used = NodePath("../state_handler")
+metadata/_custom_type_script = "uid://dkvtknpa8lsea"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="range_detector" unique_id=1927556945]
+shape = SubResource("CircleShape2D_wx21a")
+
+[node name="state_handler" type="Node" parent="." unique_id=641749295]
+script = ExtResource("4_nwq2x")
+states = ["Idle", "Attacking"]
+metadata/_custom_type_script = "uid://b86shoce52ein"
+
+[node name="Timer" type="Timer" parent="." unique_id=181139820]
+autostart = true
+
+[node name="Collision" type="CharacterBody2D" parent="." unique_id=1873656869]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision" unique_id=1132004568]
+shape = SubResource("CapsuleShape2D_sxvlh")

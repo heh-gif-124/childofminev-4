@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://v6bv52qetcf0"]
+
+[ext_resource type="Texture2D" uid="uid://dnkffubhnglfc" path="res://Sprites/Sprites/Enemies/Lowerling/LowerlingIdle.png" id="1_v0x6u"]
+[ext_resource type="Script" uid="uid://dkmbn8r4qf87v" path="res://SRC/Enemies/EnemyAI/movement.gd" id="1_v386s"]
+[ext_resource type="Script" uid="uid://b86shoce52ein" path="res://SRC/Enemies/EnemyAI/State_handler.gd" id="4_gpkt1"]
+[ext_resource type="Script" uid="uid://dkvtknpa8lsea" path="res://SRC/Enemies/EnemyAI/DetectRange.gd" id="5_t5uf5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v386s"]
+height = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t5uf5"]
+radius = 181.00276
+
+[node name="Voidling" type="CharacterBody2D" unique_id=1244030333]
+script = ExtResource("1_v386s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=887556528]
+texture = ExtResource("1_v0x6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=214510217]
+shape = SubResource("CapsuleShape2D_v386s")
+
+[node name="state_handler" type="Node" parent="." unique_id=579921010]
+script = ExtResource("4_gpkt1")
+states = ["Idle", "Walk"]
+metadata/_custom_type_script = "uid://b86shoce52ein"
+
+[node name="range_detector" type="Area2D" parent="." unique_id=485380526 node_paths=PackedStringArray("state_handler_used")]
+script = ExtResource("5_t5uf5")
+state_handler_used = NodePath("../state_handler")
+metadata/_custom_type_script = "uid://dkvtknpa8lsea"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="range_detector" unique_id=455902959]
+shape = SubResource("CircleShape2D_t5uf5")

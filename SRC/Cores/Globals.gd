@@ -3,7 +3,28 @@ var current_exp = 0
 signal upgrade_chose(id: String)
 signal SkillUse(id: Array[String])
 signal AddCombo(id: String)
+signal upgrade_Triggered
 var current_enemies_on_field = 0
+
+#Stats
+var base_max_hp = 50
+var base_crit_rate = 45
+var base_crit_dmg = 75
+
+func calculate_final_damage(dmg,crit_chance:float,crit_dmg):
+	var roll = randi_range(1,100)
+	var is_crit: bool = roll <= crit_chance
+	var multiplier: float = 1.0 + (crit_dmg/100.0)
+	var normal_dmg = dmg
+	var critted_dmg = dmg * multiplier
+	var final = critted_dmg if is_crit else normal_dmg
+	return{
+		"is_crit" : is_crit,
+		"normal_dmg" : normal_dmg,
+		"crit_dmg" : crit_dmg,
+		"final" : final
+	}
+
 func load_folder_children(path: String) -> Array:
 	var loaded_assets = []
 	var dir = DirAccess.open(path)

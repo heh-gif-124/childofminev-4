@@ -1,19 +1,28 @@
 [gd_scene format=3 uid="uid://dtqfh2cvae0qv"]
 
 [ext_resource type="Script" uid="uid://ky8fmq4fp14s" path="res://SRC/Objects/Projectiles/COmponents/move.gd" id="1_qf8o0"]
+[ext_resource type="Script" uid="uid://c8j1t7mu5tuyh" path="res://SRC/Objects/Projectiles/COmponents/base.gd" id="1_qh6e5"]
 [ext_resource type="Script" uid="uid://fnwnh1dvkbvg" path="res://SRC/Objects/Projectiles/COmponents/Collide.gd" id="2_bihh0"]
+[ext_resource type="Texture2D" uid="uid://c6713uet3ynoh" path="res://Sprites/Sprites/staff/Projectile.png" id="3_6vspf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bihh0"]
 
 [node name="Projectile" type="Node2D" unique_id=1568027788]
+script = ExtResource("1_qh6e5")
 
 [node name="move_handler" type="Node" parent="." unique_id=538260769]
 script = ExtResource("1_qf8o0")
 metadata/_custom_type_script = "uid://ky8fmq4fp14s"
 
 [node name="Collider_Handler" type="Area2D" parent="." unique_id=1965135541]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("2_bihh0")
 metadata/_custom_type_script = "uid://fnwnh1dvkbvg"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider_Handler" unique_id=1497484637]
 shape = SubResource("RectangleShape2D_bihh0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=337197745]
+rotation = 1.5707964
+texture = ExtResource("3_6vspf")
