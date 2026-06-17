@@ -46,12 +46,16 @@ text = "PLAY"
 
 [node name="Button2" type="Button" parent="HBoxContainer" unique_id=83086267]
 layout_mode = 2
+text = "SETTINGS"
 
 [node name="Button3" type="Button" parent="HBoxContainer" unique_id=2123662056]
 layout_mode = 2
+text = "LOGS"
 
 [node name="Button4" type="Button" parent="HBoxContainer" unique_id=1356314408]
 layout_mode = 2
+text = "CREDITS"
 
 [node name="Button5" type="Button" parent="HBoxContainer" unique_id=533205336]
 layout_mode = 2
+text = "EXIT"

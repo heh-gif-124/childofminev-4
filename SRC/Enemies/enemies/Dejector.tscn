@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cvxyceaqdy3qa"]
+
+[ext_resource type="Texture2D" uid="uid://b0ot5ef3ev3b4" path="res://Sprites/Sprites/Enemies/Dejector/Dejector.png" id="1_m8se0"]
+[ext_resource type="Texture2D" uid="uid://dee806ukfvhhi" path="res://Sprites/Sprites/Enemies/Dejector/Dejector_spike.png" id="2_dwbwv"]
+[ext_resource type="Script" uid="uid://dvtgt2xw0nmqw" path="res://SRC/Enemies/EnemiesSpecific/Dejector/spike_handler.gd" id="2_oxs8h"]
+[ext_resource type="Script" uid="uid://b86shoce52ein" path="res://SRC/Enemies/EnemyAI/State_handler.gd" id="4_wywjy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dwbwv"]
+radius = 16.03122
+
+[node name="Dejector" type="CharacterBody2D" unique_id=1732642487]
+texture_filter = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=63543107]
+texture_filter = 3
+texture = ExtResource("1_m8se0")
+
+[node name="Spike_handler" type="Node2D" parent="." unique_id=1177693008]
+script = ExtResource("2_oxs8h")
+
+[node name="Node2D" type="Node2D" parent="Spike_handler" unique_id=1224689602]
+position = Vector2(-40, 0)
+
+[node name="SpikeSprite" type="Sprite2D" parent="Spike_handler/Node2D" unique_id=1666129513]
+scale = Vector2(0.78, 0.78)
+texture = ExtResource("2_dwbwv")
+
+[node name="RayCast2D" type="RayCast2D" parent="Spike_handler/Node2D" unique_id=780242141]
+position = Vector2(12, 0)
+target_position = Vector2(-83, 0)
+
+[node name="Node2D2" type="Node2D" parent="Spike_handler" unique_id=1511083437]
+position = Vector2(40, 0)
+rotation = 3.1415927
+
+[node name="SpikeSprite" type="Sprite2D" parent="Spike_handler/Node2D2" unique_id=1510551866]
+scale = Vector2(0.78, 0.78)
+texture = ExtResource("2_dwbwv")
+
+[node name="RayCast2D2" type="RayCast2D" parent="Spike_handler/Node2D2" unique_id=968515425]
+position = Vector2(12, 0)
+target_position = Vector2(-83, 0)
+
+[node name="Node2D3" type="Node2D" parent="Spike_handler" unique_id=277609534]
+position = Vector2(0, -40)
+rotation = 1.5707964
+
+[node name="SpikeSprite" type="Sprite2D" parent="Spike_handler/Node2D3" unique_id=1765694182]
+scale = Vector2(0.78, 0.78)
+texture = ExtResource("2_dwbwv")
+
+[node name="RayCast2D2" type="RayCast2D" parent="Spike_handler/Node2D3" unique_id=1545096851]
+position = Vector2(12, 0)
+target_position = Vector2(-83, 0)
+
+[node name="Node2D4" type="Node2D" parent="Spike_handler" unique_id=1392613745]
+position = Vector2(0, 40)
+rotation = -1.5707964
+
+[node name="SpikeSprite" type="Sprite2D" parent="Spike_handler/Node2D4" unique_id=1547513505]
+scale = Vector2(0.78, 0.78)
+texture = ExtResource("2_dwbwv")
+
+[node name="RayCast2D2" type="RayCast2D" parent="Spike_handler/Node2D4" unique_id=1139718235]
+position = Vector2(12, 0)
+target_position = Vector2(-83, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1153019532]
+shape = SubResource("CircleShape2D_dwbwv")
+
+[node name="state_handler" type="Node" parent="." unique_id=1743600555]
+script = ExtResource("4_wywjy")
+metadata/_custom_type_script = "uid://b86shoce52ein"

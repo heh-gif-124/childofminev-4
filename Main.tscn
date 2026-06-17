@@ -11,6 +11,10 @@
 [ext_resource type="Script" uid="uid://crvkq8bfj7ca3" path="res://SRC/Cores/upgrade_menu_handler.gd" id="7_03owx"]
 [ext_resource type="PackedScene" uid="uid://djvkrooccl12i" path="res://SRC/Cores/Cards/card.tscn" id="8_trn2v"]
 [ext_resource type="Script" uid="uid://c578od588wwrt" path="res://SRC/Cores/EnemySpawner.gd" id="10_wkp8b"]
+[ext_resource type="Texture2D" uid="uid://btq33trj0wfvc" path="res://Sprites/Sprites/misc/SkillFormation.png" id="11_5vvyt"]
+[ext_resource type="Script" uid="uid://c0gpvbk7vnqtg" path="res://SRC/Cores/skill_menu.gd" id="11_c2ibq"]
+[ext_resource type="Texture2D" uid="uid://bqf2xb4hs3vki" path="res://Sprites/Sprites/misc/SkillLogo.png" id="12_c6i3y"]
+[ext_resource type="PackedScene" uid="uid://cvxyceaqdy3qa" path="res://SRC/Enemies/enemies/Dejector.tscn" id="15_j4qnp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0du0"]
 size = Vector2(864, 20)
@@ -351,6 +355,125 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.08235294, 0.08235294, 0.08235294, 1)
 
+[node name="SkillMenu" type="Control" parent="CanvasLayer" unique_id=2087328048]
+visible = false
+texture_filter = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_c2ibq")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/SkillMenu" unique_id=782041623]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.08468988, 0.08468994, 0.08468992, 0.2901961)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/SkillMenu" unique_id=1605878727]
+modulate = Color(1, 1, 1, 0.3882353)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -305.92682
+offset_top = -257.0
+offset_right = 305.92682
+offset_bottom = 335.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_5vvyt")
+
+[node name="Button" type="Button" parent="CanvasLayer/SkillMenu" unique_id=186853438]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.5
+offset_top = 33.0
+offset_right = 40.5
+offset_bottom = 116.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/SkillMenu/Button" unique_id=1510677098]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -63.5
+offset_right = 63.5
+offset_bottom = 63.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_c6i3y")
+
+[node name="Button2" type="Button" parent="CanvasLayer/SkillMenu" unique_id=1388992519]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 271.0
+offset_top = 144.0
+offset_right = 352.0
+offset_bottom = 227.0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/SkillMenu/Button2" unique_id=260161105]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -63.5
+offset_right = 63.5
+offset_bottom = 63.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_c6i3y")
+
+[node name="Button3" type="Button" parent="CanvasLayer/SkillMenu" unique_id=417875838]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 813.0
+offset_top = 144.0
+offset_right = 894.0
+offset_bottom = 227.0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/SkillMenu/Button3" unique_id=1366579763]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -63.5
+offset_right = 63.5
+offset_bottom = 63.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_c6i3y")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/SkillMenu" unique_id=1238695796]
+wait_time = 3.0
+ignore_time_scale = true
+
 [node name="Marker2D" type="Marker2D" parent="." unique_id=440903451]
 position = Vector2(-4576, -32)
 
@@ -360,3 +483,6 @@ autostart = true
 script = ExtResource("10_wkp8b")
 player = NodePath("../Player")
 metadata/_custom_type_script = "uid://c578od588wwrt"
+
+[node name="Dejector" parent="." unique_id=1732642487 instance=ExtResource("15_j4qnp")]
+position = Vector2(-205, -178)
