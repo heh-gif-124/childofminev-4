@@ -4,7 +4,8 @@ class_name room_generation
 var rooms : Array
 var parent_of_this_class : Node2D
 var reverie : PackedScene = load("res://SRC/Objects/Reverie.tscn")
-var initial_room_spacing = 5076
+var platform : Array
+var initial_room_spacing = 2592
 var first_room_spawned_right = false
 var first_room_spawned_left = false
 @export var room_spacing : float = 864.0  # Distance between rooms
@@ -22,8 +23,10 @@ var left_index : int = 0
 
 func _ready() -> void:
 	rooms = Globals.load_folder_children("res://SRC/Levels/")
+	platform = Globals.load_folder_children("res://SRC/Objects/platforms/")
 	parent_of_this_class = get_parent()
 	_generate_initial_rooms()
+	_generate_initial_platforms()
 
 
 func _process(delta: float) -> void:
@@ -44,6 +47,7 @@ func _process(delta: float) -> void:
 			
 		spawn_dynamic_room(chosen_x_pos)
 		spawn_dynamic_reverie(chosen_x_pos)
+		spawn_dynamic_platform(chosen_x_pos)
 		print("A room was spawned: " + str(chosen_x_pos))
 		rooms_spawned_so_far += 1
 
@@ -106,3 +110,36 @@ func spawn_dynamic_reverie(target_x: float) -> void:
 		var tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		tween.tween_property(r, "global_position:y", target_y, 0.5) # Slides up
 		tween.tween_property(r, "modulate:a", 1.0, 0.4)             # Fades in
+
+func spawn_dynamic_platform(target_x: float) -> void:
+	var rand = randi_range(1, 2)
+	if rand == 2:
+		var rp = platform.pick_random()
+		var r = rp.instantiate()
+		parent_of_this_class.add_child.call_deferred(r)
+		
+		var min_x = target_x - (room_spacing / 2)
+		var max_x = target_x + (room_spacing / 2)
+		r.global_position.x = randf_range(min_x, max_x)
+		
+		# --- ANIMATION FOR THE REVERIE ---
+		# Make it slide up smoothly from just below its target position
+		r.global_position.y = randf_range(-550,-400)
+
+
+
+func _generate_initial_platforms() -> void:
+	for i in get_children():
+		var rand = randi_range(1, 2)
+		if rand == 2:
+			var rp = platform.pick_random()
+			var r = rp.instantiate()
+			parent_of_this_class.add_child.call_deferred(r)
+			var target_x = i.global_position.x
+			var min_x = target_x - (room_spacing / 2)
+			var max_x = target_x + (room_spacing / 2)
+			r.global_position.x = randf_range(min_x, max_x)
+			
+			# --- ANIMATION FOR THE REVERIE ---
+			# Make it slide up smoothly from just below its target position
+			r.global_position.y = randf_range(-550,-400)

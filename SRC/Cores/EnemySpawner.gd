@@ -9,6 +9,6 @@ func _ready() -> void:
 		var t = enemy_folder.pick_random()
 		var b = t.instantiate()
 		parent.add_child(b)
-		b.global_position.y = -120
 		b.global_position.x = player.global_position.x + randf_range(-450,450)
+		b.global_position.y = -350
 		)

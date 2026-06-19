@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://btq33trj0wfvc" path="res://Sprites/Sprites/misc/SkillFormation.png" id="11_5vvyt"]
 [ext_resource type="Script" uid="uid://c0gpvbk7vnqtg" path="res://SRC/Cores/skill_menu.gd" id="11_c2ibq"]
 [ext_resource type="Texture2D" uid="uid://bqf2xb4hs3vki" path="res://Sprites/Sprites/misc/SkillLogo.png" id="12_c6i3y"]
-[ext_resource type="PackedScene" uid="uid://cvxyceaqdy3qa" path="res://SRC/Enemies/enemies/Dejector.tscn" id="15_j4qnp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0du0"]
 size = Vector2(864, 20)
@@ -128,7 +127,7 @@ texture_filter = 3
 [node name="Timer" type="Timer" parent="." unique_id=299189098]
 
 [node name="Player" parent="." unique_id=927071234 instance=ExtResource("1_glv2v")]
-position = Vector2(1, -96)
+position = Vector2(1, -198)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=7285632]
 position = Vector2(0, -96)
@@ -141,7 +140,8 @@ position = Vector2(0, 16)
 
 [node name="room_generation" type="Node" parent="." unique_id=1219749560]
 script = ExtResource("3_r0du0")
-spawn_interval = 4.0
+room_spacing = 863.09
+spawn_interval = 15.0
 metadata/_custom_type_script = "uid://bw5osuf18pbuh"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="room_generation" unique_id=1098307137]
@@ -162,22 +162,6 @@ shape = SubResource("RectangleShape2D_r0du0")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="room_generation" unique_id=31082686]
 position = Vector2(2608, -16)
-shape = SubResource("RectangleShape2D_r0du0")
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="room_generation" unique_id=1557247866]
-position = Vector2(3472, -16)
-shape = SubResource("RectangleShape2D_r0du0")
-
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="room_generation" unique_id=1365003604]
-position = Vector2(-3440, -16)
-shape = SubResource("RectangleShape2D_r0du0")
-
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="room_generation" unique_id=13919364]
-position = Vector2(-4304, -16)
-shape = SubResource("RectangleShape2D_r0du0")
-
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="room_generation" unique_id=1766815731]
-position = Vector2(4336, -16)
 shape = SubResource("RectangleShape2D_r0du0")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="room_generation" unique_id=546927096]
@@ -449,9 +433,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 813.0
+offset_left = 797.0
 offset_top = 144.0
-offset_right = 894.0
+offset_right = 878.0
 offset_bottom = 227.0
 grow_vertical = 2
 
@@ -474,8 +458,34 @@ texture = ExtResource("12_c6i3y")
 wait_time = 3.0
 ignore_time_scale = true
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=440903451]
-position = Vector2(-4576, -32)
+[node name="BossBar" type="Control" parent="CanvasLayer" unique_id=57062911]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/BossBar" unique_id=312790673]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 409.0
+offset_top = 35.0
+offset_right = -409.0
+offset_bottom = 58.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_fos0i")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3dxm6")
+value = 70.0
+
+[node name="Label" type="Label" parent="CanvasLayer/BossBar/HealthBar" unique_id=2124438325]
+layout_mode = 0
+offset_top = -9.0
+offset_right = 156.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 12
+text = "Boss"
 
 [node name="EnemySpawner" type="Timer" parent="." unique_id=464546854 node_paths=PackedStringArray("player")]
 wait_time = 5.0
@@ -483,6 +493,3 @@ autostart = true
 script = ExtResource("10_wkp8b")
 player = NodePath("../Player")
 metadata/_custom_type_script = "uid://c578od588wwrt"
-
-[node name="Dejector" parent="." unique_id=1732642487 instance=ExtResource("15_j4qnp")]
-position = Vector2(-205, -178)

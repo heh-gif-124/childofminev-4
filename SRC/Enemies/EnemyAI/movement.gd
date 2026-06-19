@@ -15,9 +15,14 @@ func _physics_process(delta: float) -> void:
 	elif $state_handler.current_state == "Idle":
 		velocity.x = 0
 	
-	if hp <= 0:
-		queue_free()
+	
 	move_and_slide()
 
+func _process(delta: float) -> void:
+	if hp <= 0:
+		print("I am TECHNICALLY dead.")
+		queue_free()
+
 func _Hurt(dmg):
+	print("HIT")
 	hp -= dmg
