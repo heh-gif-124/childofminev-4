@@ -487,6 +487,33 @@ offset_bottom = 8.0
 theme_override_font_sizes/font_size = 12
 text = "Boss"
 
+[node name="HealthBar2" type="ProgressBar" parent="CanvasLayer/BossBar" unique_id=449377274]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 409.0
+offset_top = 68.0
+offset_right = -409.0
+offset_bottom = 91.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_fos0i")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3dxm6")
+value = 70.0
+
+[node name="Label" type="Label" parent="CanvasLayer/BossBar/HealthBar2" unique_id=1297576441]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_top = -10.0
+offset_right = 78.0
+offset_bottom = 7.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "EXPERIENCE"
+horizontal_alignment = 1
+
 [node name="EnemySpawner" type="Timer" parent="." unique_id=464546854 node_paths=PackedStringArray("player")]
 wait_time = 5.0
 autostart = true
