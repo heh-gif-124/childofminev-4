@@ -1,6 +1,44 @@
 [gd_scene format=3 uid="uid://byg6tkcrd6hbl"]
 
-[ext_resource type="Texture2D" uid="uid://cqgaf3y6l81wq" path="res://Sprites/tilemaps/logo.png" id="1_uubjt"]
+[ext_resource type="Texture2D" uid="uid://cfejrw8icqxev" path="res://Sprites/tilemaps/canvas.png" id="1_uubjt"]
+[ext_resource type="Shader" uid="uid://cpx2rubxeu8uf" path="res://Shaders/Main.gdshader" id="2_5yleq"]
+
+[sub_resource type="Gradient" id="Gradient_ylpcl"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cx167"]
+noise_type = 3
+seed = 14
+frequency = 0.0174
+offset = Vector3(652.17, 0, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dolsu"]
+noise = SubResource("FastNoiseLite_cx167")
+color_ramp = SubResource("Gradient_ylpcl")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n4eug"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dlksc"]
+noise = SubResource("FastNoiseLite_n4eug")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_hcwhg"]
+colors = PackedColorArray(0, 0, 0, 1, 0.1148968, 0.11489681, 0.1148968, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5p1lm"]
+gradient = SubResource("Gradient_hcwhg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1igrg"]
+shader = ExtResource("2_5yleq")
+shader_parameter/pixelation = Vector2(256, 256)
+shader_parameter/cloud_noise1 = SubResource("NoiseTexture2D_dolsu")
+shader_parameter/scroll_speed1 = Vector2(0.02, 0.007)
+shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_dlksc")
+shader_parameter/scroll_speed2 = Vector2(-0.015, -0.004)
+shader_parameter/center_pos = Vector2(0.5, 0)
+shader_parameter/position_impact = 0.75
+shader_parameter/color_gardient = SubResource("GradientTexture1D_5p1lm")
 
 [node name="Control" type="Control" unique_id=137426827]
 layout_mode = 3
@@ -17,10 +55,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -236.13977
-offset_top = -183.0
-offset_right = 236.13977
-offset_bottom = 183.0
+offset_left = -292.0
+offset_top = -207.0
+offset_right = 292.0
+offset_bottom = 207.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_uubjt")
@@ -59,3 +97,14 @@ text = "CREDITS"
 [node name="Button5" type="Button" parent="HBoxContainer" unique_id=533205336]
 layout_mode = 2
 text = "EXIT"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1139312984]
+z_index = -22
+material = SubResource("ShaderMaterial_1igrg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

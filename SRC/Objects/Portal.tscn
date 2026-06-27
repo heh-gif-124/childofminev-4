@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://idemhnnpshhy"]
+
+[ext_resource type="Texture2D" uid="uid://vgfkd7kr1ye0" path="res://Sprites/Sprites/Objects/Teleporter.png" id="1_lbuhi"]
+[ext_resource type="Texture2D" uid="uid://d0j2fn8jy5vrp" path="res://Sprites/Sprites/VFX/Dust.png" id="2_lygpd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lygpd"]
+atlas = ExtResource("1_lbuhi")
+region = Rect2(0, 0, 78, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0i14"]
+atlas = ExtResource("1_lbuhi")
+region = Rect2(78, 0, 78, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nvckk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lygpd")
+}],
+"loop": true,
+"name": &"Deactivated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0i14")
+}],
+"loop": true,
+"name": &"activated",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_lbuhi"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.705, 0.77528095), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_lbuhi"]
+offsets = PackedFloat32Array(0, 0.69135803)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Portal" type="Node2D" unique_id=2139080379]
+texture_filter = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=335617763]
+texture_filter = 3
+sprite_frames = SubResource("SpriteFrames_nvckk")
+animation = &"Deactivated"
+
+[node name="PortalHighLights" type="Line2D" parent="." unique_id=90006305]
+z_index = -2
+texture_filter = 3
+position = Vector2(-11.000004, 9.191803)
+scale = Vector2(11, 1.1780822)
+points = PackedVector2Array(1, 17, 1, -328)
+width_curve = SubResource("Curve_lbuhi")
+gradient = SubResource("Gradient_lbuhi")
+
+[node name="PortalVFX" type="CPUParticles2D" parent="." unique_id=1684617799]
+position = Vector2(0, 29)
+amount = 120
+texture = ExtResource("2_lygpd")
+lifetime = 10.98
+lifetime_randomness = 0.48
+fixed_fps = 30
+draw_order = 1
+emission_shape = 3
+emission_rect_extents = Vector2(50, 1)
+gravity = Vector2(0, -300)
+scale_amount_min = 0.1
+scale_amount_max = 0.25

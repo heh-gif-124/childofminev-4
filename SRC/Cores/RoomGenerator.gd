@@ -1,6 +1,9 @@
 extends Node
 class_name room_generation
 
+@export var room_export : String
+
+
 var rooms : Array
 var parent_of_this_class : Node2D
 var reverie : PackedScene = load("res://SRC/Objects/Reverie.tscn")
@@ -22,7 +25,8 @@ var left_index : int = 0
 @export var spawn_interval : float = 10.0 
 
 func _ready() -> void:
-	rooms = Globals.load_folder_children("res://SRC/Levels/")
+	Globals.boss_progress = 0
+	rooms = Globals.load_folder_children(room_export)
 	platform = Globals.load_folder_children("res://SRC/Objects/platforms/")
 	parent_of_this_class = get_parent()
 	_generate_initial_rooms()
@@ -31,26 +35,31 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	total_time_elapsed += delta
-	
 	var target_room_count = floor(total_time_elapsed / spawn_interval)
 	
 	if target_room_count > rooms_spawned_so_far:
-		var direction = randi_range(0, 1)
-		var chosen_x_pos : float = 0.0
+		Globals.teleporter_progress += 25
+		print(Globals.teleporter_progress)
+		# 1. SPAWN RIGHT ROOM
+		var right_x_pos : float = parent_of_this_class.global_position.x + initial_room_spacing + (right_index * room_spacing)
+		right_index += 1
 		
-		if direction == 0:
-			chosen_x_pos = parent_of_this_class.global_position.x + initial_room_spacing + (right_index * room_spacing)
-			right_index += 1
-		else:
-			chosen_x_pos = parent_of_this_class.global_position.x - initial_room_spacing - (left_index * room_spacing)
-			left_index += 1
-			
-		spawn_dynamic_room(chosen_x_pos)
-		spawn_dynamic_reverie(chosen_x_pos)
-		spawn_dynamic_platform(chosen_x_pos)
-		print("A room was spawned: " + str(chosen_x_pos))
+		spawn_dynamic_room(right_x_pos)
+		spawn_dynamic_reverie(right_x_pos)
+		spawn_dynamic_platform(right_x_pos)
+		print("Right room spawned: " + str(right_x_pos))
 		rooms_spawned_so_far += 1
 
+		# 2. SPAWN LEFT ROOM
+		var left_x_pos : float = parent_of_this_class.global_position.x - initial_room_spacing - (left_index * room_spacing)
+		left_index += 1
+	
+		spawn_dynamic_room(left_x_pos)
+		spawn_dynamic_reverie(left_x_pos)
+		spawn_dynamic_platform(left_x_pos)
+		print("Left room spawned: " + str(left_x_pos))
+		# FIXED: Indented this line so it only counts up when a room actually spawns
+		rooms_spawned_so_far += 1
 
 func _generate_initial_rooms() -> void:
 	for i in get_children():
@@ -62,6 +71,7 @@ func _generate_initial_rooms() -> void:
 
 
 func spawn_dynamic_room(target_x: float) -> void:
+
 	var final_y = 0.0
 	
 	var r = rooms.pick_random()

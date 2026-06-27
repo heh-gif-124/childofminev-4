@@ -1,16 +1,17 @@
 extends Node
-var current_exp = 0
+
 signal upgrade_chose(id: String)
 signal SkillUse(id: Array[String])
 signal AddCombo(id: String)
 signal upgrade_Triggered
-var current_enemies_on_field = 0
-
+var boss_progress = 0 # Teleporter Progress reaches 100, then boss progress starts appearing
+var teleporter_progress = 0 
 #Stats
 var base_max_hp = 50
 var base_crit_rate = 45
 var base_crit_dmg = 75
-
+var current_exp = 0
+var moneh = 0
 func calculate_final_damage(dmg,crit_chance:float,crit_dmg):
 	var roll = randi_range(1,100)
 	var is_crit: bool = roll <= crit_chance
