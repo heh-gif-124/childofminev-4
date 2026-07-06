@@ -3,19 +3,29 @@
 [ext_resource type="PackedScene" uid="uid://bm1vxsa8tfpyx" path="res://SRC/Player/Player.tscn" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://qx88s1tcv7vw" path="res://SRC/Cores/camera_2d.gd" id="2_20pc6"]
 [ext_resource type="Texture2D" uid="uid://dsirf87irop5t" path="res://Sprites/tilemaps/tilemap_1.png" id="2_uu6xs"]
+[ext_resource type="Script" uid="uid://ccl8cjrr1sc28" path="res://SRC/Upgrades/glide.gd" id="3_bg4s2"]
 [ext_resource type="Script" uid="uid://bw5osuf18pbuh" path="res://SRC/Cores/RoomGenerator.gd" id="3_r0du0"]
+[ext_resource type="PackedScene" uid="uid://cd4pbtk5vc4xi" path="res://SRC/Levels/Level1/SpecialRoom/PortalRoom.tscn" id="4_5tuhn"]
 [ext_resource type="PackedScene" uid="uid://c7ee1sxr6i0ga" path="res://SRC/Staff/Staff.tscn" id="4_cm0pq"]
+[ext_resource type="Script" uid="uid://byxfhkfjapjva" path="res://SRC/Upgrades/Skills/heal.gd" id="4_xrxkg"]
 [ext_resource type="Texture2D" uid="uid://dbl0sq4xvof5g" path="res://Sprites/Sprites/Player/Player_icon.png" id="5_fos0i"]
 [ext_resource type="Script" uid="uid://c7duhpbdsspft" path="res://SRC/Cores/HUDHandler.gd" id="5_lgr22"]
 [ext_resource type="Shader" uid="uid://cpx2rubxeu8uf" path="res://Shaders/Main.gdshader" id="6_3dxm6"]
 [ext_resource type="Script" uid="uid://crvkq8bfj7ca3" path="res://SRC/Cores/upgrade_menu_handler.gd" id="7_03owx"]
-[ext_resource type="PackedScene" uid="uid://djvkrooccl12i" path="res://SRC/Cores/Cards/card.tscn" id="8_trn2v"]
 [ext_resource type="Script" uid="uid://c578od588wwrt" path="res://SRC/Cores/EnemySpawner.gd" id="10_wkp8b"]
+[ext_resource type="Script" uid="uid://di63pmav3esjs" path="res://SRC/Cores/intro.gd" id="11_2gh4u"]
+[ext_resource type="Shader" uid="uid://8kb7ly42er2u" path="res://Shaders/intro.gdshader" id="11_3b0ty"]
 [ext_resource type="Texture2D" uid="uid://btq33trj0wfvc" path="res://Sprites/Sprites/misc/SkillFormation.png" id="11_5vvyt"]
 [ext_resource type="Script" uid="uid://c0gpvbk7vnqtg" path="res://SRC/Cores/skill_menu.gd" id="11_c2ibq"]
 [ext_resource type="Texture2D" uid="uid://bqf2xb4hs3vki" path="res://Sprites/Sprites/misc/SkillLogo.png" id="12_c6i3y"]
+[ext_resource type="FontFile" uid="uid://cadtm5fqlf748" path="res://Fonts/Bookmark.otf" id="12_devvj"]
 [ext_resource type="Script" uid="uid://bftpnvfo8ts3a" path="res://SRC/Cores/exp_bar.gd" id="14_j4qnp"]
 [ext_resource type="Script" uid="uid://bbhocdsux1nm0" path="res://SRC/Cores/Tp_progress_bar.gd" id="15_fpfj3"]
+[ext_resource type="Material" uid="uid://bc2d1baisa0pt" path="res://Shaders/new_shader_material.tres" id="17_kjvhd"]
+[ext_resource type="Texture2D" uid="uid://d0j2fn8jy5vrp" path="res://Sprites/Sprites/VFX/Dust.png" id="17_sc1dx"]
+[ext_resource type="Script" uid="uid://orgarsiwe0q4" path="res://SRC/Cores/coordinate_locking.gd" id="19_5tuhn"]
+[ext_resource type="PackedScene" uid="uid://btuqdlg60kvgc" path="res://SRC/Objects/Shelter/Shelter.tscn" id="24_hhcpw"]
+[ext_resource type="PackedScene" uid="uid://ca5evq4803a4n" path="res://SRC/Objects/Shelter/Shelter_Inside.tscn" id="25_mxvw5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0du0"]
 size = Vector2(864, 20)
@@ -123,13 +133,53 @@ shader_parameter/center_pos = Vector2(0.5, 0)
 shader_parameter/position_impact = 0.75
 shader_parameter/color_gardient = SubResource("GradientTexture2D_5vvyt")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bg4s2"]
+shader = ExtResource("11_3b0ty")
+
+[sub_resource type="Animation" id="Animation_5tuhn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2gh4u"]
+resource_name = "intor"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.38, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_devvj"]
+_data = {
+&"RESET": SubResource("Animation_5tuhn"),
+&"intor": SubResource("Animation_2gh4u")
+}
+
 [node name="Node2D" type="Node2D" unique_id=1579513874]
 texture_filter = 3
 
 [node name="Timer" type="Timer" parent="." unique_id=299189098]
 
 [node name="Player" parent="." unique_id=927071234 instance=ExtResource("1_glv2v")]
-position = Vector2(1, -198)
+position = Vector2(1, -49)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=7285632]
 position = Vector2(0, -96)
@@ -140,9 +190,18 @@ script = ExtResource("2_20pc6")
 [node name="Marker2D" type="Marker2D" parent="Player" unique_id=2096851390]
 position = Vector2(0, 16)
 
+[node name="glide" type="Node" parent="Player" unique_id=375292413]
+script = ExtResource("3_bg4s2")
+metadata/_custom_type_script = "uid://ccl8cjrr1sc28"
+
+[node name="heal" type="Node" parent="Player" unique_id=1885843521]
+script = ExtResource("4_xrxkg")
+metadata/_custom_type_script = "uid://byxfhkfjapjva"
+
 [node name="room_generation" type="Node" parent="." unique_id=1219749560]
 script = ExtResource("3_r0du0")
 room_export = "res://SRC/Levels/Level1/NormalRoom/"
+teleporter_room = ExtResource("4_5tuhn")
 room_spacing = 863.09
 spawn_interval = 35.0
 metadata/_custom_type_script = "uid://bw5osuf18pbuh"
@@ -270,6 +329,7 @@ color = Color(0.48570347, 0.48570353, 0.48570347, 1)
 
 [node name="Upgrade_Menu" type="Control" parent="CanvasLayer" unique_id=1741764425]
 visible = false
+z_index = 100
 texture_filter = 3
 layout_mode = 3
 anchors_preset = 15
@@ -314,36 +374,63 @@ horizontal_alignment = 1
 [node name="CardContainer" type="HBoxContainer" parent="CanvasLayer/Upgrade_Menu/VBoxContainer" unique_id=19589062]
 layout_mode = 2
 
-[node name="Card" parent="CanvasLayer/Upgrade_Menu/VBoxContainer/CardContainer" unique_id=247006259 instance=ExtResource("8_trn2v")]
-layout_mode = 2
-
-[node name="Card2" parent="CanvasLayer/Upgrade_Menu/VBoxContainer/CardContainer" unique_id=2127621814 instance=ExtResource("8_trn2v")]
-layout_mode = 2
-
-[node name="Card3" parent="CanvasLayer/Upgrade_Menu/VBoxContainer/CardContainer" unique_id=1643157645 instance=ExtResource("8_trn2v")]
-layout_mode = 2
-
 [node name="Intro" type="Control" parent="CanvasLayer" unique_id=1485560698]
-visible = false
+z_index = 1002
 texture_filter = 3
+material = SubResource("ShaderMaterial_bg4s2")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("11_2gh4u")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Intro" unique_id=2088635884]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Intro" unique_id=1147696145]
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+mouse_filter = 2
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Intro" unique_id=1111805886]
+libraries/ = SubResource("AnimationLibrary_devvj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Intro" unique_id=2132318038]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -259.5
+offset_top = -71.5
+offset_right = 259.5
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Intro/VBoxContainer" unique_id=543480997]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_devvj")
+theme_override_font_sizes/font_size = 65
+text = "THE GRASSLAND"
+
+[node name="Poem" type="Label" parent="CanvasLayer/Intro/VBoxContainer" unique_id=1129128192]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = " \"In The beginning, there was a blank canvas.\"
+\"A World not yet built.\""
+horizontal_alignment = 1
 
 [node name="SkillMenu" type="Control" parent="CanvasLayer" unique_id=2087328048]
 visible = false
+z_index = 100
 texture_filter = 3
 layout_mode = 3
 anchors_preset = 15
@@ -531,3 +618,21 @@ autostart = true
 script = ExtResource("10_wkp8b")
 player = NodePath("../Player")
 metadata/_custom_type_script = "uid://c578od588wwrt"
+
+[node name="Water" type="Sprite2D" parent="." unique_id=15608796 node_paths=PackedStringArray("target")]
+z_index = 1
+material = ExtResource("17_kjvhd")
+position = Vector2(66, 439)
+scale = Vector2(94.6875, 23.5)
+texture = ExtResource("17_sc1dx")
+script = ExtResource("19_5tuhn")
+y_lock = true
+target = NodePath("../Player")
+
+[node name="Shelter" parent="." unique_id=401941425 instance=ExtResource("24_hhcpw")]
+z_index = -1
+position = Vector2(1, -17)
+
+[node name="ShelterInside" parent="." unique_id=2005964987 instance=ExtResource("25_mxvw5")]
+z_index = -1
+position = Vector2(-27, 4716)

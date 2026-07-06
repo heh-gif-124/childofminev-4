@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://vgfkd7kr1ye0" path="res://Sprites/Sprites/Objects/Teleporter.png" id="1_lbuhi"]
 [ext_resource type="Texture2D" uid="uid://d0j2fn8jy5vrp" path="res://Sprites/Sprites/VFX/Dust.png" id="2_lygpd"]
+[ext_resource type="Texture2D" uid="uid://bo6lik4h8v64s" path="res://Sprites/Sprites/Objects/DistortionRunIndicator.png" id="3_d0i14"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lygpd"]
 atlas = ExtResource("1_lbuhi")
@@ -40,6 +41,8 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Portal" type="Node2D" unique_id=2139080379]
 texture_filter = 3
+position = Vector2(2, -80)
+scale = Vector2(3, 3)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=335617763]
 texture_filter = 3
@@ -47,6 +50,7 @@ sprite_frames = SubResource("SpriteFrames_nvckk")
 animation = &"Deactivated"
 
 [node name="PortalHighLights" type="Line2D" parent="." unique_id=90006305]
+visible = false
 z_index = -2
 texture_filter = 3
 position = Vector2(-11.000004, 9.191803)
@@ -56,6 +60,7 @@ width_curve = SubResource("Curve_lbuhi")
 gradient = SubResource("Gradient_lbuhi")
 
 [node name="PortalVFX" type="CPUParticles2D" parent="." unique_id=1684617799]
+visible = false
 position = Vector2(0, 29)
 amount = 120
 texture = ExtResource("2_lygpd")
@@ -68,3 +73,9 @@ emission_rect_extents = Vector2(50, 1)
 gravity = Vector2(0, -300)
 scale_amount_min = 0.1
 scale_amount_max = 0.25
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=677300619]
+visible = false
+position = Vector2(0, -47.000004)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("3_d0i14")

@@ -3,24 +3,26 @@
 [ext_resource type="Texture2D" uid="uid://dnkffubhnglfc" path="res://Sprites/Sprites/Enemies/Lowerling/LowerlingIdle.png" id="1_v0x6u"]
 [ext_resource type="Script" uid="uid://dkmbn8r4qf87v" path="res://SRC/Enemies/EnemyAI/movement.gd" id="1_v386s"]
 [ext_resource type="Script" uid="uid://b86shoce52ein" path="res://SRC/Enemies/EnemyAI/State_handler.gd" id="4_gpkt1"]
+[ext_resource type="Texture2D" uid="uid://wi3fd1qqs4fe" path="res://Sprites/Sprites/Enemies/Lowerling/lowerling_shield.png" id="5_qiya5"]
 [ext_resource type="Script" uid="uid://dkvtknpa8lsea" path="res://SRC/Enemies/EnemyAI/DetectRange.gd" id="5_t5uf5"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v386s"]
-height = 32.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_qiya5"]
+radius = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t5uf5"]
-radius = 181.00276
+radius = 366.00546
 
 [node name="Voidling" type="CharacterBody2D" unique_id=1244030333]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_v386s")
+SPEED = 500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=887556528]
 texture = ExtResource("1_v0x6u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=214510217]
-shape = SubResource("CapsuleShape2D_v386s")
+shape = SubResource("CircleShape2D_qiya5")
 
 [node name="state_handler" type="Node" parent="." unique_id=579921010]
 script = ExtResource("4_gpkt1")
@@ -34,3 +36,11 @@ metadata/_custom_type_script = "uid://dkvtknpa8lsea"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="range_detector" unique_id=455902959]
 shape = SubResource("CircleShape2D_t5uf5")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1273792862]
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D" unique_id=914102858]
+position = Vector2(28, 0)
+rotation = 1.5707964
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("5_qiya5")

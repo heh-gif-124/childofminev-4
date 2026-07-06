@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://ca5evq4803a4n"]
+
+[ext_resource type="Texture2D" uid="uid://3lpvr6mfmkv6" path="res://Sprites/Sprites/misc/Shelter/Shelter_inside.png" id="1_mo7ne"]
+[ext_resource type="Texture2D" uid="uid://d0j2fn8jy5vrp" path="res://Sprites/Sprites/VFX/Dust.png" id="2_gvy0b"]
+[ext_resource type="Shader" uid="uid://bk5sauc5apclu" path="res://Shaders/squiggle.gdshader" id="2_hqtwp"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vmear"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tgnv8"]
+noise = SubResource("FastNoiseLite_vmear")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_agwtj"]
+shader = ExtResource("2_hqtwp")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 1.0
+shader_parameter/fps = 6.0
+shader_parameter/noise = SubResource("NoiseTexture2D_tgnv8")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtwp"]
+size = Vector2(470, 297)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mo7ne"]
+size = Vector2(468, 40)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hqtwp"]
+noise_type = 2
+frequency = 0.0132
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vmear"]
+noise = SubResource("FastNoiseLite_hqtwp")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vmear"]
+shader = ExtResource("2_hqtwp")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 2.0
+shader_parameter/fps = 2.45
+shader_parameter/noise = SubResource("NoiseTexture2D_vmear")
+
+[node name="ShelterInside" type="Node2D" unique_id=2005964987]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1471480103]
+texture_filter = 3
+material = SubResource("ShaderMaterial_agwtj")
+position = Vector2(0, -123)
+scale = Vector2(2, 2)
+texture = ExtResource("1_mo7ne")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1164374533]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1635790723]
+position = Vector2(0, 109.5)
+shape = SubResource("RectangleShape2D_hqtwp")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1047220051]
+position = Vector2(0, -262)
+shape = SubResource("RectangleShape2D_mo7ne")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1601756019]
+position = Vector2(-250, -164)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_mo7ne")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1253024349]
+position = Vector2(249, -148)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_mo7ne")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=493436249]
+z_index = -1
+texture_filter = 3
+material = SubResource("ShaderMaterial_vmear")
+position = Vector2(0, -123)
+scale = Vector2(20.75, 11.687502)
+texture = ExtResource("2_gvy0b")

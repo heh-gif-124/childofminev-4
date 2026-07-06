@@ -5,7 +5,8 @@ signal SkillUse(id: Array[String])
 signal AddCombo(id: String)
 signal upgrade_Triggered
 var boss_progress = 0 # Teleporter Progress reaches 100, then boss progress starts appearing
-var teleporter_progress = 0 
+var teleporter_progress = 0
+var game_started = false
 #Stats
 var base_max_hp = 50
 var base_crit_rate = 45

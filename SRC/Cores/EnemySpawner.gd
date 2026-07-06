@@ -8,7 +8,10 @@ func _ready() -> void:
 	timeout.connect(func():
 		var t = enemy_folder.pick_random()
 		var b = t.instantiate()
+		var yt = player.global_position.x + randf_range(-450,450)
+		var tu = Vector2(yt,-350)
 		parent.add_child(b)
-		b.global_position.x = player.global_position.x + randf_range(-450,450)
+		b.global_position.x = yt
+		PillarManager.spawn_light_pillar_2d(tu)
 		b.global_position.y = -350
 		)

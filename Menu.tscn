@@ -1,7 +1,17 @@
 [gd_scene format=3 uid="uid://byg6tkcrd6hbl"]
 
+[ext_resource type="Shader" uid="uid://bi7tjttpb6tdj" path="res://Shaders/Glitch.gdshader" id="1_cx167"]
 [ext_resource type="Texture2D" uid="uid://cfejrw8icqxev" path="res://Sprites/tilemaps/canvas.png" id="1_uubjt"]
 [ext_resource type="Shader" uid="uid://cpx2rubxeu8uf" path="res://Shaders/Main.gdshader" id="2_5yleq"]
+[ext_resource type="Shader" uid="uid://kh8csfwn7q2v" path="res://Shaders/Rain.gdshader" id="3_ylpcl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dolsu"]
+shader = ExtResource("1_cx167")
+shader_parameter/shake_power = 0.015
+shader_parameter/shake_rate = 0.0790000037525
+shader_parameter/shake_speed = 6.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.0010000000475
 
 [sub_resource type="Gradient" id="Gradient_ylpcl"]
 
@@ -40,6 +50,20 @@ shader_parameter/center_pos = Vector2(0.5, 0)
 shader_parameter/position_impact = 0.75
 shader_parameter/color_gardient = SubResource("GradientTexture1D_5p1lm")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cx167"]
+shader = ExtResource("3_ylpcl")
+shader_parameter/rain_amount = 245.0
+shader_parameter/near_rain_length = 0.17800000775648
+shader_parameter/far_rain_length = 0.11100000457398
+shader_parameter/near_rain_width = 1.0
+shader_parameter/far_rain_width = 0.5
+shader_parameter/near_rain_transparency = 1.0
+shader_parameter/far_rain_transparency = 0.5
+shader_parameter/rain_color = Color(0.099985994, 0.099985994, 0.099985994, 1)
+shader_parameter/base_rain_speed = 0.10000000149012
+shader_parameter/additional_rain_speed = 0.22300000733262
+shader_parameter/slant = 0.01000004797499998
+
 [node name="Control" type="Control" unique_id=137426827]
 layout_mode = 3
 anchors_preset = 15
@@ -55,10 +79,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -292.0
-offset_top = -207.0
-offset_right = 292.0
-offset_bottom = 207.0
+offset_left = -277.0
+offset_top = -220.0
+offset_right = 307.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_uubjt")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1943419086]
+material = SubResource("ShaderMaterial_dolsu")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_uubjt")
@@ -108,3 +143,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1305406208]
+z_index = -1
+material = SubResource("ShaderMaterial_cx167")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.007843138)

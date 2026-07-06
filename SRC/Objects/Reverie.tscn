@@ -32,3 +32,9 @@ offset_top = -57.6
 offset_right = 44.200005
 offset_bottom = -34.6
 text = "[E] Interact "
+
+[node name="Label" type="Label" parent="." unique_id=488618357]
+offset_left = -19.199999
+offset_top = -35.199997
+offset_right = 20.800001
+offset_bottom = -12.199997

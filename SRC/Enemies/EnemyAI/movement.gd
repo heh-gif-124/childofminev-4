@@ -1,17 +1,25 @@
 extends CharacterBody2D
 
 var hp = 10
-const SPEED = 300.0
+@export var SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var player = get_parent().find_child("Player")
 
+func _ready() -> void:
+	pass
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if $state_handler.current_state == "Walk":
+		$Marker2D.look_at($range_detector.player.global_position)
 		var dir_to_target = (player.global_position - global_position).normalized()
+		$Sprite2D.rotation += 15 * delta
 		velocity.x = dir_to_target.x * SPEED
+		if $range_detector.player.global_position >= global_position:
+			$Sprite2D.flip_v = true
+		elif $range_detector.player.global_position <= global_position:
+			$Sprite2D.flip_v = false
 	elif $state_handler.current_state == "Idle":
 		velocity.x = 0
 	

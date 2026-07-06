@@ -2,8 +2,8 @@ extends Node
 class_name room_generation
 
 @export var room_export : String
-
-
+@export var teleporter_room : PackedScene
+@export var room_spacing : float = 864.0  # Distance between rooms
 var rooms : Array
 var parent_of_this_class : Node2D
 var reverie : PackedScene = load("res://SRC/Objects/Reverie.tscn")
@@ -11,7 +11,9 @@ var platform : Array
 var initial_room_spacing = 2592
 var first_room_spawned_right = false
 var first_room_spawned_left = false
-@export var room_spacing : float = 864.0  # Distance between rooms
+var teleporter_spawned = false
+
+
 
 # --- Time-based Generation Variables ---
 var total_time_elapsed : float = 0.0
@@ -36,15 +38,18 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	total_time_elapsed += delta
 	var target_room_count = floor(total_time_elapsed / spawn_interval)
-	
-	if target_room_count > rooms_spawned_so_far:
+	var teleporter_spawned_yet : bool = false
+	if target_room_count >= rooms_spawned_so_far:
 		Globals.teleporter_progress += 25
 		print(Globals.teleporter_progress)
+		if Globals.teleporter_progress >= 100 and not teleporter_spawned:
+			teleporter_spawned_yet = true
+			teleporter_spawned = true
 		# 1. SPAWN RIGHT ROOM
 		var right_x_pos : float = parent_of_this_class.global_position.x + initial_room_spacing + (right_index * room_spacing)
 		right_index += 1
 		
-		spawn_dynamic_room(right_x_pos)
+		spawn_dynamic_room(right_x_pos, teleporter_spawned_yet)
 		spawn_dynamic_reverie(right_x_pos)
 		spawn_dynamic_platform(right_x_pos)
 		print("Right room spawned: " + str(right_x_pos))
@@ -54,7 +59,7 @@ func _process(delta: float) -> void:
 		var left_x_pos : float = parent_of_this_class.global_position.x - initial_room_spacing - (left_index * room_spacing)
 		left_index += 1
 	
-		spawn_dynamic_room(left_x_pos)
+		spawn_dynamic_room(left_x_pos, teleporter_spawned_yet)
 		spawn_dynamic_reverie(left_x_pos)
 		spawn_dynamic_platform(left_x_pos)
 		print("Left room spawned: " + str(left_x_pos))
@@ -70,12 +75,16 @@ func _generate_initial_rooms() -> void:
 		t.global_position.y = 0
 
 
-func spawn_dynamic_room(target_x: float) -> void:
+func spawn_dynamic_room(target_x: float,teleporter:bool=false) -> void:
 
 	var final_y = 0.0
-	
-	var r = rooms.pick_random()
-	var t = r.instantiate()
+	var t: Node
+	if teleporter and teleporter_room != null:
+		print("EVERYONE GET IN THE PORTAL NOW WE'RE LEAVING THIS LAYER, AH! WHAT THE!?")
+		t = teleporter_room.instantiate()
+	else:
+		var r = rooms.pick_random()
+		t = r.instantiate()
 	parent_of_this_class.add_child.call_deferred(t)
 	
 	# Position the room horizontally, but start it 400 pixels lower than its final spot

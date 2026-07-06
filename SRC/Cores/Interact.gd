@@ -8,7 +8,7 @@ signal interacted
 @onready var prompt_text: Label = $Label
 
 var player_in_range: bool = false
-
+var player = CharacterBody2D
 func _ready() -> void:
 	# Hide the text prompt at the start
 	prompt_text.visible = false
@@ -31,10 +31,12 @@ func _on_body_entered(body: Node2D) -> void:
 	# Make sure the thing entering the area is actually the player
 	if body.is_in_group("Player"):
 		player_in_range = true
+		player = body
 		prompt_text.visible = true
 
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		player_in_range = false
+		player = CharacterBody2D
 		prompt_text.visible = false
