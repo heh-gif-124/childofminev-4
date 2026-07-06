@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://di63pmav3esjs" path="res://SRC/Cores/intro.gd" id="11_2gh4u"]
 [ext_resource type="Shader" uid="uid://8kb7ly42er2u" path="res://Shaders/intro.gdshader" id="11_3b0ty"]
 [ext_resource type="Texture2D" uid="uid://btq33trj0wfvc" path="res://Sprites/Sprites/misc/SkillFormation.png" id="11_5vvyt"]
+[ext_resource type="Texture2D" uid="uid://bqf2xb4hs3vki" path="res://Sprites/Sprites/misc/SkillLogo.png" id="12_c6i3y"]
 [ext_resource type="FontFile" uid="uid://cadtm5fqlf748" path="res://Fonts/Bookmark.otf" id="12_devvj"]
 [ext_resource type="Script" uid="uid://bftpnvfo8ts3a" path="res://SRC/Cores/exp_bar.gd" id="14_j4qnp"]
 [ext_resource type="Script" uid="uid://bbhocdsux1nm0" path="res://SRC/Cores/Tp_progress_bar.gd" id="15_fpfj3"]
@@ -468,9 +469,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -305.92682
-offset_top = -257.0
+offset_top = -263.0
 offset_right = 305.92682
-offset_bottom = 335.0
+offset_bottom = 329.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -490,6 +491,11 @@ text = "ddd "
 script = ExtResource("18_sqvbp")
 symbol = "tr"
 
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SkillMenu/Button" unique_id=985451737]
+position = Vector2(40.75, 41.5)
+scale = Vector2(2.734375, 2.59375)
+texture = ExtResource("12_c6i3y")
+
 [node name="Button2" type="Button" parent="CanvasLayer/SkillMenu" unique_id=1388992519]
 layout_mode = 1
 anchors_preset = 4
@@ -504,6 +510,11 @@ text = "ddd "
 script = ExtResource("18_sqvbp")
 symbol = "sq"
 
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SkillMenu/Button2" unique_id=2002158063]
+position = Vector2(40.75, 41.5)
+scale = Vector2(2.734375, 2.59375)
+texture = ExtResource("12_c6i3y")
+
 [node name="Button3" type="Button" parent="CanvasLayer/SkillMenu" unique_id=417875838]
 layout_mode = 1
 anchors_preset = 4
@@ -517,6 +528,11 @@ grow_vertical = 2
 text = "ddd "
 script = ExtResource("18_sqvbp")
 symbol = "ci"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SkillMenu/Button3" unique_id=1848636611]
+position = Vector2(40.75, 41.5)
+scale = Vector2(2.734375, 2.59375)
+texture = ExtResource("12_c6i3y")
 
 [node name="Timer" type="Timer" parent="CanvasLayer/SkillMenu" unique_id=1238695796]
 wait_time = 3.0
