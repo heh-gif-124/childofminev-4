@@ -78,7 +78,7 @@ _data = {
 &"parry": SubResource("Animation_sofvj")
 }
 
-[node name="Staff" type="Node2D" unique_id=493018424]
+[node name="Staff" type="Node2D" unique_id=493018424 groups=["staff"]]
 script = ExtResource("1_yysl8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1283397820]

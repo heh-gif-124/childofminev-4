@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bw5osuf18pbuh" path="res://SRC/Cores/RoomGenerator.gd" id="3_r0du0"]
 [ext_resource type="PackedScene" uid="uid://cd4pbtk5vc4xi" path="res://SRC/Levels/Level1/SpecialRoom/PortalRoom.tscn" id="4_5tuhn"]
 [ext_resource type="PackedScene" uid="uid://c7ee1sxr6i0ga" path="res://SRC/Staff/Staff.tscn" id="4_cm0pq"]
+[ext_resource type="Script" uid="uid://bvityt0xt6soq" path="res://SRC/Cores/SkillConjureHandler.gd" id="4_sqvbp"]
 [ext_resource type="Script" uid="uid://byxfhkfjapjva" path="res://SRC/Upgrades/Skills/heal.gd" id="4_xrxkg"]
 [ext_resource type="Texture2D" uid="uid://dbl0sq4xvof5g" path="res://Sprites/Sprites/Player/Player_icon.png" id="5_fos0i"]
 [ext_resource type="Script" uid="uid://c7duhpbdsspft" path="res://SRC/Cores/HUDHandler.gd" id="5_lgr22"]
@@ -16,14 +17,14 @@
 [ext_resource type="Script" uid="uid://di63pmav3esjs" path="res://SRC/Cores/intro.gd" id="11_2gh4u"]
 [ext_resource type="Shader" uid="uid://8kb7ly42er2u" path="res://Shaders/intro.gdshader" id="11_3b0ty"]
 [ext_resource type="Texture2D" uid="uid://btq33trj0wfvc" path="res://Sprites/Sprites/misc/SkillFormation.png" id="11_5vvyt"]
-[ext_resource type="Script" uid="uid://c0gpvbk7vnqtg" path="res://SRC/Cores/skill_menu.gd" id="11_c2ibq"]
-[ext_resource type="Texture2D" uid="uid://bqf2xb4hs3vki" path="res://Sprites/Sprites/misc/SkillLogo.png" id="12_c6i3y"]
 [ext_resource type="FontFile" uid="uid://cadtm5fqlf748" path="res://Fonts/Bookmark.otf" id="12_devvj"]
 [ext_resource type="Script" uid="uid://bftpnvfo8ts3a" path="res://SRC/Cores/exp_bar.gd" id="14_j4qnp"]
 [ext_resource type="Script" uid="uid://bbhocdsux1nm0" path="res://SRC/Cores/Tp_progress_bar.gd" id="15_fpfj3"]
 [ext_resource type="Material" uid="uid://bc2d1baisa0pt" path="res://Shaders/new_shader_material.tres" id="17_kjvhd"]
 [ext_resource type="Texture2D" uid="uid://d0j2fn8jy5vrp" path="res://Sprites/Sprites/VFX/Dust.png" id="17_sc1dx"]
+[ext_resource type="Script" uid="uid://ctd27s6jpqorm" path="res://SRC/Cores/button_Skill.gd" id="18_sqvbp"]
 [ext_resource type="Script" uid="uid://orgarsiwe0q4" path="res://SRC/Cores/coordinate_locking.gd" id="19_5tuhn"]
+[ext_resource type="Script" uid="uid://ckr7rxt40nu16" path="res://SRC/Cores/SkillManager.gd" id="19_sqvbp"]
 [ext_resource type="PackedScene" uid="uid://btuqdlg60kvgc" path="res://SRC/Objects/Shelter/Shelter.tscn" id="24_hhcpw"]
 [ext_resource type="PackedScene" uid="uid://ca5evq4803a4n" path="res://SRC/Objects/Shelter/Shelter_Inside.tscn" id="25_mxvw5"]
 
@@ -194,7 +195,11 @@ position = Vector2(0, 16)
 script = ExtResource("3_bg4s2")
 metadata/_custom_type_script = "uid://ccl8cjrr1sc28"
 
-[node name="heal" type="Node" parent="Player" unique_id=1885843521]
+[node name="SkillConjureManager" type="Node" parent="Player" unique_id=1851834593]
+script = ExtResource("4_sqvbp")
+metadata/_custom_type_script = "uid://bvityt0xt6soq"
+
+[node name="heal" type="Node" parent="Player/SkillConjureManager" unique_id=1885843521]
 script = ExtResource("4_xrxkg")
 metadata/_custom_type_script = "uid://byxfhkfjapjva"
 
@@ -247,6 +252,7 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="Container" type="Container" parent="CanvasLayer/Control" unique_id=1842233098]
 layout_mode = 0
@@ -337,6 +343,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
 script = ExtResource("7_03owx")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Upgrade_Menu" unique_id=380856883]
@@ -364,6 +372,7 @@ offset_right = 454.0
 offset_bottom = 202.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/Upgrade_Menu/VBoxContainer" unique_id=312823361]
 layout_mode = 2
@@ -375,6 +384,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="Intro" type="Control" parent="CanvasLayer" unique_id=1485560698]
+visible = false
 z_index = 1002
 texture_filter = 3
 material = SubResource("ShaderMaterial_bg4s2")
@@ -384,6 +394,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("11_2gh4u")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Intro" unique_id=1147696145]
@@ -429,7 +440,6 @@ text = " \"In The beginning, there was a blank canvas.\"
 horizontal_alignment = 1
 
 [node name="SkillMenu" type="Control" parent="CanvasLayer" unique_id=2087328048]
-visible = false
 z_index = 100
 texture_filter = 3
 layout_mode = 3
@@ -438,7 +448,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("11_c2ibq")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/SkillMenu" unique_id=782041623]
 layout_mode = 1
@@ -464,6 +473,7 @@ offset_right = 305.92682
 offset_bottom = 335.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("11_5vvyt")
 
 [node name="Button" type="Button" parent="CanvasLayer/SkillMenu" unique_id=186853438]
@@ -476,21 +486,9 @@ offset_top = 33.0
 offset_right = 40.5
 offset_bottom = 116.0
 grow_horizontal = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/SkillMenu/Button" unique_id=1510677098]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -63.5
-offset_top = -63.5
-offset_right = 63.5
-offset_bottom = 63.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("12_c6i3y")
+text = "ddd "
+script = ExtResource("18_sqvbp")
+symbol = "tr"
 
 [node name="Button2" type="Button" parent="CanvasLayer/SkillMenu" unique_id=1388992519]
 layout_mode = 1
@@ -502,21 +500,9 @@ offset_top = 144.0
 offset_right = 352.0
 offset_bottom = 227.0
 grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/SkillMenu/Button2" unique_id=260161105]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -63.5
-offset_top = -63.5
-offset_right = 63.5
-offset_bottom = 63.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("12_c6i3y")
+text = "ddd "
+script = ExtResource("18_sqvbp")
+symbol = "sq"
 
 [node name="Button3" type="Button" parent="CanvasLayer/SkillMenu" unique_id=417875838]
 layout_mode = 1
@@ -528,25 +514,31 @@ offset_top = 144.0
 offset_right = 878.0
 offset_bottom = 227.0
 grow_vertical = 2
+text = "ddd "
+script = ExtResource("18_sqvbp")
+symbol = "ci"
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/SkillMenu/Button3" unique_id=1366579763]
+[node name="Timer" type="Timer" parent="CanvasLayer/SkillMenu" unique_id=1238695796]
+wait_time = 3.0
+ignore_time_scale = true
+
+[node name="SkillManager" type="Node" parent="CanvasLayer/SkillMenu" unique_id=1996319792]
+script = ExtResource("19_sqvbp")
+metadata/_custom_type_script = "uid://ckr7rxt40nu16"
+
+[node name="ComboCombativeThing" type="Label" parent="CanvasLayer/SkillMenu" unique_id=1717624795]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -63.5
-offset_top = -63.5
-offset_right = 63.5
-offset_bottom = 63.5
+offset_left = -20.0
+offset_top = 248.0
+offset_right = 20.0
+offset_bottom = 271.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("12_c6i3y")
-
-[node name="Timer" type="Timer" parent="CanvasLayer/SkillMenu" unique_id=1238695796]
-wait_time = 3.0
-ignore_time_scale = true
 
 [node name="Bars" type="Control" parent="CanvasLayer" unique_id=57062911]
 layout_mode = 3
@@ -555,6 +547,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ExpBar" type="ProgressBar" parent="CanvasLayer/Bars" unique_id=449377274]
 layout_mode = 1
