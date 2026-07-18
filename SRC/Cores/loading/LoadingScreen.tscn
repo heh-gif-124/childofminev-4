@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://ea3ucckj7qbf"]
+
+[ext_resource type="Script" uid="uid://b8pebofx04k6b" path="res://SRC/Cores/loading/LoadingHandler.gd" id="1_ws8bj"]
+[ext_resource type="Shader" uid="uid://cpx2rubxeu8uf" path="res://Shaders/Main.gdshader" id="2_cx0qx"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5bg3g"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nqwsx"]
+noise = SubResource("FastNoiseLite_5bg3g")
+seamless = true
+invert = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c6brf"]
+noise_type = 2
+frequency = 0.3119
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kksyr"]
+noise = SubResource("FastNoiseLite_c6brf")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_pdwjm"]
+colors = PackedColorArray(0, 0, 0, 1, 0.080783255, 0.080783375, 0.0807833, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ipq5b"]
+gradient = SubResource("Gradient_pdwjm")
+fill_to = Vector2(0.8484849, 0.7171717)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y4ift"]
+shader = ExtResource("2_cx0qx")
+shader_parameter/pixelation = Vector2(256, 256)
+shader_parameter/cloud_noise1 = SubResource("NoiseTexture2D_nqwsx")
+shader_parameter/scroll_speed1 = Vector2(0.02, 0.007)
+shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_kksyr")
+shader_parameter/scroll_speed2 = Vector2(-0.015, -0.004)
+shader_parameter/center_pos = Vector2(0.5, 0)
+shader_parameter/position_impact = 0.75
+shader_parameter/color_gardient = SubResource("GradientTexture2D_ipq5b")
+
+[node name="LoadingScreen" type="Node2D" unique_id=1470834091]
+script = ExtResource("1_ws8bj")
+splash_t = Array[String](["Parrying enemies allow you to regain energy", "Dealing a critical hit allows you to stun the enemy for a short period of time", "Upgrades are crucial for you to go deeper ", "When the amalgous bar reaches max, you have a 1 minute window of finding shelter", "Remember to reload your staff, you cant fire projectiles without energy.", "Energy can also be regained from parrying", "Enemies are fast, but you are faster. Show them whose the one in charge."])
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=231691228]
+material = SubResource("ShaderMaterial_y4ift")
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="." unique_id=413781506]
+offset_left = 824.0
+offset_right = 1192.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 33
+text = "LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING..LOADING.."
+autowrap_mode = 3
+
+[node name="Text" type="Label" parent="." unique_id=1886449551]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 368.0
+offset_bottom = 152.0
+theme_override_font_sizes/font_size = 25
+text = "LOADING"
+autowrap_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1796477251]
+offset_top = 632.0
+offset_right = 1152.0
+offset_bottom = 659.0
+show_percentage = false

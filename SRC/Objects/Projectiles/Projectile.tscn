@@ -4,8 +4,71 @@
 [ext_resource type="Script" uid="uid://c8j1t7mu5tuyh" path="res://SRC/Objects/Projectiles/COmponents/base.gd" id="1_qh6e5"]
 [ext_resource type="Script" uid="uid://fnwnh1dvkbvg" path="res://SRC/Objects/Projectiles/COmponents/Collide.gd" id="2_bihh0"]
 [ext_resource type="Texture2D" uid="uid://c6713uet3ynoh" path="res://Sprites/Sprites/staff/Projectile.png" id="3_6vspf"]
+[ext_resource type="Script" uid="uid://i2dnat5vyr6e" path="res://SRC/Cores/Despawn_handler.gd" id="5_i3igo"]
+[ext_resource type="Texture2D" uid="uid://dd6g6w3kkrfm1" path="res://Sprites/Sprites/staff/Projectile/Projectile_explode_readying.png" id="6_feo30"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bihh0"]
+
+[sub_resource type="Animation" id="Animation_0mhi6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_6vspf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q6nea"]
+resource_name = "explode"
+length = 0.8333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_feo30")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.12129189, 0.22858857, 0.34521538, 0.48516756),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.45, 0.45), Vector2(1, 1), Vector2(0.4, 0.4), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4smcm"]
+_data = {
+&"RESET": SubResource("Animation_0mhi6"),
+&"explode": SubResource("Animation_q6nea")
+}
 
 [node name="Projectile" type="Node2D" unique_id=1568027788]
 script = ExtResource("1_qh6e5")
@@ -26,3 +89,10 @@ shape = SubResource("RectangleShape2D_bihh0")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=337197745]
 rotation = 1.5707964
 texture = ExtResource("3_6vspf")
+
+[node name="despawn_handler" type="Timer" parent="." unique_id=68602444]
+script = ExtResource("5_i3igo")
+metadata/_custom_type_script = "uid://i2dnat5vyr6e"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=253694237]
+libraries/ = SubResource("AnimationLibrary_4smcm")

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://b86shoce52ein" path="res://SRC/Enemies/EnemyAI/State_handler.gd" id="3_332qe"]
 [ext_resource type="Script" uid="uid://dkvtknpa8lsea" path="res://SRC/Enemies/EnemyAI/DetectRange.gd" id="4_7hnm7"]
 [ext_resource type="Texture2D" uid="uid://cn5flqc31asta" path="res://Sprites/Sprites/Enemies/Lowerling/Lowering_Turret.png" id="5_4xcfb"]
+[ext_resource type="Script" uid="uid://i2dnat5vyr6e" path="res://SRC/Cores/Despawn_handler.gd" id="6_uck4q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4xcfb"]
 radius = 16.0
@@ -12,7 +13,7 @@ radius = 16.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_t5uf5"]
 radius = 366.00546
 
-[node name="Voidling" type="CharacterBody2D" unique_id=1244030333]
+[node name="Voidling" type="CharacterBody2D" unique_id=1244030333 groups=["Enemy"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_4xcfb")
@@ -42,3 +43,7 @@ metadata/_custom_type_script = "uid://dkvtknpa8lsea"
 shape = SubResource("CircleShape2D_t5uf5")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1273792862]
+
+[node name="despawn_handler" type="Timer" parent="." unique_id=622577373]
+script = ExtResource("6_uck4q")
+metadata/_custom_type_script = "uid://i2dnat5vyr6e"

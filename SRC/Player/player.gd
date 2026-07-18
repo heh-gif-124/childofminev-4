@@ -4,7 +4,7 @@ var hp = 100.0
 var max_hp = 100.0
 var speed = 350
 var mouse_pos = get_global_mouse_position()
-
+var has_shield = false
 func _process(delta: float) -> void:
 	
 	mouse_pos = get_global_mouse_position()
@@ -26,4 +26,7 @@ func _input(event: InputEvent) -> void:
 			$AnimatedSprite2D.play("default")
 	
 		
-	
+
+func _Hurt():
+	if has_shield == false:
+		pass

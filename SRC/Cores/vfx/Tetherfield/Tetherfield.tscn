@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://x3qefe05vsae"]
+
+[ext_resource type="Script" uid="uid://7if0t2yc126y" path="res://SRC/Cores/vfx/Tetherfield/tetherfield.gd" id="1_0takb"]
+[ext_resource type="Texture2D" uid="uid://d7wtn8my3c8v" path="res://Sprites/Sprites/misc/TetherField.png" id="1_75g0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cv2p5"]
+size = Vector2(120, 120)
+
+[node name="Tetherfield" type="Node2D" unique_id=1517171647]
+script = ExtResource("1_0takb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1068707636]
+texture_filter = 3
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_75g0o")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1575042122]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1417821549]
+shape = SubResource("RectangleShape2D_cv2p5")

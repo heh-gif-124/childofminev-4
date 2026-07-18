@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	if hp <= 0:
-		Globals.current_exp += 5
+		Globals.current_exp += 5 * Globals.expmult
 		Globals.teleporter_progress += 4
 		print("I am TECHNICALLY dead.")
 		queue_free()

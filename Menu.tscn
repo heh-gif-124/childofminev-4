@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://byg6tkcrd6hbl"]
 
 [ext_resource type="Shader" uid="uid://bi7tjttpb6tdj" path="res://Shaders/Glitch.gdshader" id="1_cx167"]
+[ext_resource type="Script" uid="uid://cbbdkl4vggal6" path="res://SRC/Cores/MainMenu.gd" id="1_dolsu"]
 [ext_resource type="Texture2D" uid="uid://cfejrw8icqxev" path="res://Sprites/tilemaps/canvas.png" id="1_uubjt"]
 [ext_resource type="Shader" uid="uid://cpx2rubxeu8uf" path="res://Shaders/Main.gdshader" id="2_5yleq"]
 [ext_resource type="Shader" uid="uid://kh8csfwn7q2v" path="res://Shaders/Rain.gdshader" id="3_ylpcl"]
@@ -71,6 +72,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dolsu")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=336542155]
 layout_mode = 1

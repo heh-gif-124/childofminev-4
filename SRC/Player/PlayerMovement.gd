@@ -2,6 +2,8 @@ extends Node
 class_name movement_handler
 @export var speed = 400.0
 @onready var sprite = $"../AnimatedSprite2D"
+@export var acceleration: float = 1200.0  # How fast they speed up
+@export var friction: float = 1500.0      # How fast they slide to a stop
 var parent
 var slowfall: bool
 # Called when the node enters the scene tree for the first time.
@@ -13,8 +15,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var dir = Input.get_axis("walk_left","walk_right")
-	parent.velocity.x = speed * dir
 	
+	if dir != 0:
+		# Smoothly accelerate towards maximum speed
+		parent.velocity.x = move_toward(parent.velocity.x, dir * speed, acceleration * delta)
+	else:
+		# Smoothly slow down to 0 when no buttons are pressed
+		parent.velocity.x = move_toward(parent.velocity.x, 0, friction * delta)
 	aim_at_cursor()
 	
 func aim_at_cursor():

@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://djvkrooccl12i"]
+[gd_scene format=3 uid="uid://pyfd817l58rl"]
 
-[ext_resource type="Texture2D" uid="uid://dpxjo42gat32c" path="res://Sprites/Sprites/misc/Card.png" id="1_qxprf"]
-[ext_resource type="Texture2D" uid="uid://c54g55r2tr5tt" path="res://Sprites/Sprites/misc/Icons/SlashMagic.png" id="2_qvwfc"]
+[ext_resource type="Texture2D" uid="uid://dpxjo42gat32c" path="res://Sprites/Sprites/misc/Card.png" id="1_hemyw"]
+[ext_resource type="Texture2D" uid="uid://d7wtn8my3c8v" path="res://Sprites/Sprites/misc/TetherField.png" id="2_hemyw"]
 
 [node name="Card" type="TextureRect" unique_id=247006259]
-texture = ExtResource("1_qxprf")
+texture = ExtResource("1_hemyw")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=536197344]
 layout_mode = 1
@@ -16,7 +16,7 @@ offset_top = 29.0
 offset_right = 44.0
 offset_bottom = 117.0
 grow_horizontal = 2
-texture = ExtResource("2_qvwfc")
+texture = ExtResource("2_hemyw")
 
 [node name="Label" type="Label" parent="." unique_id=1828601413]
 layout_mode = 1
@@ -29,7 +29,7 @@ offset_right = 95.5
 offset_bottom = 2.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 29
-text = "Gliding"
+text = "Tetherfield"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="." unique_id=420920656]
@@ -46,8 +46,7 @@ offset_bottom = 85.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 14
-text = "\"Have you ever just, wanted to fly?
-WELL, now you can! Sort of.\"
+text = "\"Personalized Pocket bubble that slows down enemies? nifty, but useful!\"
 
-Holding down the [Down] key allows you to glide"
+A small grid-like area appears, it follows you, and slows down enemies that are approaching."
 autowrap_mode = 2

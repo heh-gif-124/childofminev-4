@@ -4,6 +4,7 @@ signal upgrade_chose(id: String)
 signal SkillUse(id: Array[String])
 signal AddCombo(id: String)
 signal upgrade_Triggered
+signal load_scene(path: String)
 var boss_progress = 0 # Teleporter Progress reaches 100, then boss progress starts appearing
 var teleporter_progress = 0
 var game_started = false
@@ -13,6 +14,8 @@ var base_crit_rate = 45
 var base_crit_dmg = 75
 var current_exp = 0
 var moneh = 0
+var scene_to_be_loaded : String
+var expmult = 1
 func calculate_final_damage(dmg,crit_chance:float,crit_dmg):
 	var roll = randi_range(1,100)
 	var is_crit: bool = roll <= crit_chance

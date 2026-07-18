@@ -28,6 +28,7 @@ var left_index : int = 0
 
 func _ready() -> void:
 	Globals.boss_progress = 0
+	Globals.teleporter_progress = 0
 	rooms = Globals.load_folder_children(room_export)
 	platform = Globals.load_folder_children("res://SRC/Objects/platforms/")
 	parent_of_this_class = get_parent()
@@ -40,7 +41,7 @@ func _process(delta: float) -> void:
 	var target_room_count = floor(total_time_elapsed / spawn_interval)
 	var teleporter_spawned_yet : bool = false
 	if target_room_count >= rooms_spawned_so_far:
-		Globals.teleporter_progress += 25
+		Globals.teleporter_progress += 5
 		print(Globals.teleporter_progress)
 		if Globals.teleporter_progress >= 100 and not teleporter_spawned:
 			teleporter_spawned_yet = true

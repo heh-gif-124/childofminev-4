@@ -14,3 +14,5 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("reload"):
 		$AnimationPlayer.play("Reload")
 		energy = max_energy
+	if Input.is_action_just_pressed("Parry"):
+		$AnimationPlayer.play("Parry_2")
