@@ -1,9 +1,9 @@
 extends Node2D
 
-var p_crit
-var p_crit_dmg
+var p_crit = 5
+var p_crit_dmg = 20
 
 func _ready() -> void:
 	$move_handler.explode.connect(func():
-		$AnimationPlayer.play("explode")
+		queue_free()
 		)

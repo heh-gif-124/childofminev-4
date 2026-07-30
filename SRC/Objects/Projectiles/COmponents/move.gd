@@ -6,7 +6,7 @@ class_name MoveHandler
 @export_category("Movement")
 @export var launch_speed: float = 1800.0
 @export var drag: float = 8.0          # Higher = slows down faster! Try 5.0 to 15.0.
-@export var stop_threshold: float = 15.0 # How close to 0 speed before it explodes
+@export var stop_threshold: float = 75.0 # How close to 0 speed before it explodes
 
 @export_category("Effects")
 @export var explosion_effect: PackedScene

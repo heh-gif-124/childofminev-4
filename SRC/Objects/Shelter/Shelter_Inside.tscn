@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://ca5evq4803a4n"]
 
 [ext_resource type="Texture2D" uid="uid://3lpvr6mfmkv6" path="res://Sprites/Sprites/misc/Shelter/Shelter_inside.png" id="1_mo7ne"]
+[ext_resource type="Script" uid="uid://bxm6cck7kkxlf" path="res://SRC/Objects/Shelter/shelter_inside.gd" id="1_tgnv8"]
 [ext_resource type="Texture2D" uid="uid://d0j2fn8jy5vrp" path="res://Sprites/Sprites/VFX/Dust.png" id="2_gvy0b"]
 [ext_resource type="Shader" uid="uid://bk5sauc5apclu" path="res://Shaders/squiggle.gdshader" id="2_hqtwp"]
+[ext_resource type="Script" uid="uid://pl2xjbk5cmmo" path="res://SRC/Cores/Interact.gd" id="4_vmear"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vmear"]
 
@@ -37,7 +39,11 @@ shader_parameter/strength = 2.0
 shader_parameter/fps = 2.45
 shader_parameter/noise = SubResource("NoiseTexture2D_vmear")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgnv8"]
+size = Vector2(84, 108)
+
 [node name="ShelterInside" type="Node2D" unique_id=2005964987]
+script = ExtResource("1_tgnv8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1471480103]
 texture_filter = 3
@@ -73,3 +79,19 @@ material = SubResource("ShaderMaterial_vmear")
 position = Vector2(0, -123)
 scale = Vector2(20.75, 11.687502)
 texture = ExtResource("2_gvy0b")
+
+[node name="Interact_handler" type="Area2D" parent="." unique_id=242833019]
+position = Vector2(0, -40)
+script = ExtResource("4_vmear")
+metadata/_custom_type_script = "uid://pl2xjbk5cmmo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact_handler" unique_id=1097065560]
+position = Vector2(0, -54)
+shape = SubResource("RectangleShape2D_tgnv8")
+
+[node name="Label" type="Label" parent="Interact_handler" unique_id=832394667]
+offset_left = -20.0
+offset_top = -81.0
+offset_right = 22.0
+offset_bottom = -58.0
+text = "Enter"

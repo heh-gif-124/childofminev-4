@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://byg6tkcrd6hbl"]
+
+[ext_resource type="Script" uid="uid://cbbdkl4vggal6" path="res://SRC/Cores/UI/MainMenu.gd" id="1_4sk33"]
+[ext_resource type="Texture2D" uid="uid://b0swivoa75puq" path="res://Sprites/tilemaps/C_1_-removebg-preview.png" id="2_vm7fw"]
+[ext_resource type="Shader" uid="uid://cpx2rubxeu8uf" path="res://Shaders/Main.gdshader" id="3_ygg4t"]
+[ext_resource type="Shader" uid="uid://kh8csfwn7q2v" path="res://Shaders/Rain.gdshader" id="4_tccht"]
+[ext_resource type="AudioStream" uid="uid://bm8qxpalkg4ru" path="res://SFX/Music/05_SlowFallToHell.mp3" id="5_4fwik"]
+
+[sub_resource type="Gradient" id="Gradient_ylpcl"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cx167"]
+noise_type = 3
+seed = 14
+frequency = 0.0174
+offset = Vector3(652.17, 0, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dolsu"]
+noise = SubResource("FastNoiseLite_cx167")
+color_ramp = SubResource("Gradient_ylpcl")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n4eug"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dlksc"]
+noise = SubResource("FastNoiseLite_n4eug")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_hcwhg"]
+colors = PackedColorArray(0, 0, 0, 1, 0.1148968, 0.11489681, 0.1148968, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5p1lm"]
+gradient = SubResource("Gradient_hcwhg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1igrg"]
+shader = ExtResource("3_ygg4t")
+shader_parameter/pixelation = Vector2(256, 256)
+shader_parameter/cloud_noise1 = SubResource("NoiseTexture2D_dolsu")
+shader_parameter/scroll_speed1 = Vector2(0.02, 0.007)
+shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_dlksc")
+shader_parameter/scroll_speed2 = Vector2(-0.015, -0.004)
+shader_parameter/center_pos = Vector2(0.5, 0)
+shader_parameter/position_impact = 0.75
+shader_parameter/color_gardient = SubResource("GradientTexture1D_5p1lm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cx167"]
+shader = ExtResource("4_tccht")
+shader_parameter/rain_amount = 245.0
+shader_parameter/near_rain_length = 0.17800000775648
+shader_parameter/far_rain_length = 0.11100000457398
+shader_parameter/near_rain_width = 1.0
+shader_parameter/far_rain_width = 0.5
+shader_parameter/near_rain_transparency = 1.0
+shader_parameter/far_rain_transparency = 0.5
+shader_parameter/rain_color = Color(0.099985994, 0.099985994, 0.099985994, 1)
+shader_parameter/base_rain_speed = 0.10000000149012
+shader_parameter/additional_rain_speed = 0.22300000733262
+shader_parameter/slant = 0.01000004797499998
+
+[node name="Control" type="Control" unique_id=137426827]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4sk33")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=336542155]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.5
+offset_top = -370.5
+offset_right = 384.5
+offset_bottom = 370.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vm7fw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=286890308]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -116.0
+offset_right = 20.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="HBoxContainer" unique_id=266027476]
+layout_mode = 2
+text = "PLAY"
+
+[node name="Button2" type="Button" parent="HBoxContainer" unique_id=83086267]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="Button3" type="Button" parent="HBoxContainer" unique_id=2123662056]
+layout_mode = 2
+text = "LOGS"
+
+[node name="Button4" type="Button" parent="HBoxContainer" unique_id=1356314408]
+layout_mode = 2
+text = "CREDITS"
+
+[node name="Button5" type="Button" parent="HBoxContainer" unique_id=533205336]
+layout_mode = 2
+text = "EXIT"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1139312984]
+z_index = -22
+material = SubResource("ShaderMaterial_1igrg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1305406208]
+z_index = -1
+material = SubResource("ShaderMaterial_cx167")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.007843138)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=98054443]
+stream = ExtResource("5_4fwik")
+volume_db = 24.0
+autoplay = true

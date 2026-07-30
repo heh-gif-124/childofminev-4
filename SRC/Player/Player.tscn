@@ -3,16 +3,23 @@
 [ext_resource type="Script" uid="uid://coi0257k1npv0" path="res://SRC/Player/player.gd" id="1_8qye1"]
 [ext_resource type="Script" uid="uid://cquc550nrg60k" path="res://SRC/Player/PlayerMovement.gd" id="1_unxx3"]
 [ext_resource type="Script" uid="uid://d33p2sr3vrvps" path="res://SRC/Player/JumpHandler.gd" id="2_n2pi2"]
+[ext_resource type="Texture2D" uid="uid://deqtb6ubbjyyd" path="res://Sprites/Sprites/Player/Plyer_Sprites/Player_Stagger.png" id="3_1u4tl"]
 [ext_resource type="Texture2D" uid="uid://t2jyp4bejvkh" path="res://Sprites/Sprites/Player/Player_idle.png" id="3_nswup"]
 [ext_resource type="Texture2D" uid="uid://clcwm2wdrxgju" path="res://Sprites/Sprites/Player/Plyer_Sprites/player_jump.png" id="4_66w6c"]
 [ext_resource type="Texture2D" uid="uid://nhu1a0yrdefy" path="res://Sprites/Sprites/Player/Plyer_Sprites/Player_move.png" id="4_qpdg2"]
 [ext_resource type="Texture2D" uid="uid://5qts54md1rvb" path="res://Sprites/Sprites/Player/Plyer_Sprites/player_move_back.png" id="5_vkgy7"]
+[ext_resource type="Texture2D" uid="uid://cm1pstqx003kp" path="res://Sprites/Sprites/Objects/Upgrades_vfx/Shield.png" id="8_pb72n"]
+[ext_resource type="Texture2D" uid="uid://b5gpxivqow8mc" path="res://Sprites/Sprites/Player/Block_break.png" id="10_6opif"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vkgy7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_unxx3"]
 radius = 15.0
 height = 62.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6opif"]
+atlas = ExtResource("3_1u4tl")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8qye1"]
 atlas = ExtResource("3_nswup")
@@ -34,9 +41,17 @@ region = Rect2(0, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_6opif")
+}],
+"loop": 1,
+"name": &"Break",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8qye1")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }, {
@@ -44,7 +59,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pb72n")
 }],
-"loop": true,
+"loop": 1,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -52,7 +67,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vkgy7")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 5.0
 }, {
@@ -60,10 +75,62 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_66w6c")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_back",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_pb72n"]
+resource_name = "Block_Start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(0.27739242, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_6opif"]
+resource_name = "Block_end"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(0.27739242, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1u4tl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6opif"]
+_data = {
+&"Block_Start": SubResource("Animation_pb72n"),
+&"Block_end": SubResource("Animation_6opif"),
+&"RESET": SubResource("Animation_1u4tl")
+}
 
 [node name="Player" type="CharacterBody2D" unique_id=927071234 groups=["Player"]]
 material = SubResource("ShaderMaterial_vkgy7")
@@ -80,6 +147,7 @@ shape = SubResource("CapsuleShape2D_unxx3")
 texture_filter = 3
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_qpdg2")
+animation = &"Break"
 
 [node name="Ghost_Timer" type="Timer" parent="." unique_id=182034078]
 wait_time = 0.05
@@ -88,5 +156,27 @@ autostart = true
 [node name="jump_handler" type="Node" parent="." unique_id=313076819]
 script = ExtResource("2_n2pi2")
 metadata/_custom_type_script = "uid://d33p2sr3vrvps"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=80527586]
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("8_pb72n")
+
+[node name="MainPlayerAnimationHandler" type="AnimationPlayer" parent="." unique_id=704587038]
+libraries/ = SubResource("AnimationLibrary_6opif")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=272008456]
+visible = false
+modulate = Color(1, 1, 1, 0.5294118)
+texture_filter = 3
+rotation = -0.15183733
+scale = Vector2(2.1875, 1)
+texture = ExtResource("10_6opif")
+
+[node name="Label" type="Label" parent="Sprite2D2" unique_id=1874615780]
+offset_left = -25.6
+offset_top = -8.0
+offset_right = 25.4
+offset_bottom = 15.0
+text = "BREAK"
 
 [connection signal="timeout" from="Ghost_Timer" to="movement_handler" method="_on_ghost_timer_timeout"]

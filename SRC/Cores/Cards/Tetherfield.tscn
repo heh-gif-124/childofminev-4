@@ -32,21 +32,14 @@ theme_override_font_sizes/font_size = 29
 text = "Tetherfield"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="." unique_id=420920656]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -141.0
-offset_top = -49.5
-offset_right = 84.0
-offset_bottom = 85.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 14
-text = "\"Personalized Pocket bubble that slows down enemies? nifty, but useful!\"
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1611781642]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 294.0
+offset_bottom = 335.0
+text = "\"A field that slows down enemies? cool i guess?\"
 
-A small grid-like area appears, it follows you, and slows down enemies that are approaching."
-autowrap_mode = 2
+Sprawls a mini field capable of slowing down enemies speed.
+
+enemies within the field gain a 10% increased damage"

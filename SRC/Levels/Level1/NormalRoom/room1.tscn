@@ -58,7 +58,8 @@ texture = ExtResource("1_35ttu")
 2:7/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_e5sch"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 255
+physics_layer_0/collision_mask = 255
 sources/0 = SubResource("TileSetAtlasSource_8hllb")
 
 [node name="Room1" type="Node2D" unique_id=2095336138]

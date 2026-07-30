@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bi6w75cb16ctb"]
+
+[ext_resource type="Texture2D" uid="uid://dpxjo42gat32c" path="res://Sprites/Sprites/misc/Card.png" id="1_gsr2l"]
+[ext_resource type="Texture2D" uid="uid://d7wtn8my3c8v" path="res://Sprites/Sprites/misc/TetherField.png" id="2_vprrc"]
+
+[node name="Card" type="TextureRect" unique_id=247006259]
+texture = ExtResource("1_gsr2l")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=536197344]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = 29.0
+offset_right = 44.0
+offset_bottom = 117.0
+grow_horizontal = 2
+texture = ExtResource("2_vprrc")
+
+[node name="Label" type="Label" parent="." unique_id=1828601413]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.5
+offset_top = -38.0
+offset_right = 95.5
+offset_bottom = 2.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 29
+text = "Engagement"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1611781642]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 294.0
+offset_bottom = 335.0
+text = "\"Duels???????? In this world????? yeah thats impossible, well, sometimes of course.\"
+
+Dealing damage to the same enemy deals 1% more damage to that said enemy, up to 20%"

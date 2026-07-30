@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bei0f5stimlpq"]
+
+[ext_resource type="Texture2D" uid="uid://dmsou0q4b8682" path="res://Sprites/tilemaps/FlorrinManual.png" id="1_ncwvs"]
+[ext_resource type="Shader" uid="uid://kh8csfwn7q2v" path="res://Shaders/Rain.gdshader" id="2_akjmd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ygci7"]
+shader = ExtResource("2_akjmd")
+shader_parameter/rain_amount = 245.0
+shader_parameter/near_rain_length = 0.17800000775648
+shader_parameter/far_rain_length = 0.11100000457398
+shader_parameter/near_rain_width = 1.0
+shader_parameter/far_rain_width = 0.5
+shader_parameter/near_rain_transparency = 1.0
+shader_parameter/far_rain_transparency = 0.5
+shader_parameter/rain_color = Color(0.099985994, 0.099985994, 0.099985994, 1)
+shader_parameter/base_rain_speed = 0.10000000149012
+shader_parameter/additional_rain_speed = 0.22300000733262
+shader_parameter/slant = 0.01000004797499998
+
+[node name="Tutorialpart" type="Node2D" unique_id=1509696232]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1643035580]
+texture = ExtResource("1_ncwvs")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1963802661]
+z_index = -1
+material = SubResource("ShaderMaterial_ygci7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1728.0
+offset_top = -1398.0
+offset_right = 2322.0
+offset_bottom = 524.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.007843138)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=97549103]
+zoom = Vector2(0.5, 0.5)

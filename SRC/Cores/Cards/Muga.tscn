@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://c5ip5cdiljrun"]
+
+[ext_resource type="Texture2D" uid="uid://dpxjo42gat32c" path="res://Sprites/Sprites/misc/Card.png" id="1_yj1ov"]
+[ext_resource type="Texture2D" uid="uid://cycckpqag5fvn" path="res://Sprites/Shitpost/artworks-wSHHN60Cnzvy1vmv-U6jyDA-t500x500.jpg" id="2_yj1ov"]
+
+[node name="Card" type="TextureRect" unique_id=247006259]
+texture = ExtResource("1_yj1ov")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=536197344]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 123.0
+grow_horizontal = 2
+texture = ExtResource("2_yj1ov")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=1828601413]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.5
+offset_top = -38.0
+offset_right = 95.5
+offset_bottom = 2.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 29
+text = "Muga
+"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1611781642]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 294.0
+offset_bottom = 335.0
+text = "\"I swear ive heard this somewhere, but where though? Eh, probably nothing important.\"
+
+When you attack too much, enter a state of selflessness. Increasing your damage by 30% but you lose the ability to block
+(last for 10 seconds, has a 30 second cooldown)
+"

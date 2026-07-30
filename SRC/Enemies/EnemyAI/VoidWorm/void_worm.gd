@@ -7,6 +7,7 @@ var hp = 20.0
 func _ready():
 	$Timer.paused = true
 	$Timer.timeout.connect(func():
+		$Head.look_at($range_detector.player.global_position)
 		shoot()
 		)
 func shoot():

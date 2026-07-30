@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://csdh58i0rqdgw"]
+
+[ext_resource type="Script" uid="uid://bntxys5tdagmc" path="res://SRC/Cores/UI/introHandler.gd" id="1_kvudu"]
+
+[sub_resource type="Animation" id="Animation_7eg0p"]
+resource_name = "Intro"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.7333333, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["A Game made by Particlis", "Has alot of furries in the futures", "And Maybe bullet hell but whatever"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.7333333, 2.5, 2.93, 4.0333333, 5.133333, 6.733333, 7.2701497, 8.72, 10, 12.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(14.966666),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_change"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gjrx4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["A Game made by Particlis"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sb8jg"]
+_data = {
+&"Intro": SubResource("Animation_7eg0p"),
+&"RESET": SubResource("Animation_gjrx4")
+}
+
+[node name="Intro" type="Control" unique_id=745020515]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kvudu")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=123535341]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1878644884]
+libraries/ = SubResource("AnimationLibrary_sb8jg")
+
+[node name="Label" type="Label" parent="." unique_id=899691789]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "A Game made by Particlis"
+
+[node name="Label2" type="Label" parent="." unique_id=1137076651]
+layout_mode = 0
+offset_top = 597.0
+offset_right = 309.0
+offset_bottom = 643.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 33
+text = "press SPACE to skip"

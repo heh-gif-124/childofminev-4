@@ -18,7 +18,10 @@ func _process(delta: float) -> void:
 	
 	if dir != 0:
 		# Smoothly accelerate towards maximum speed
-		parent.velocity.x = move_toward(parent.velocity.x, dir * speed, acceleration * delta)
+		if parent.is_blocking == true:
+			parent.velocity.x = move_toward(parent.velocity.x, dir * speed, acceleration * delta)/1.25
+		elif  parent.is_blocking == false:
+			parent.velocity.x = move_toward(parent.velocity.x, dir * speed, acceleration * delta)
 	else:
 		# Smoothly slow down to 0 when no buttons are pressed
 		parent.velocity.x = move_toward(parent.velocity.x, 0, friction * delta)
