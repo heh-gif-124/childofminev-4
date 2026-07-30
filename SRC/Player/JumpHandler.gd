@@ -30,6 +30,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not parent.is_on_floor() and is_dashing == false:
 		parent.velocity.y += gravity * delta
+		print("FUCK YOU")
 	if is_dashing:
 		# Override normal movement and apply the fixed dash speed
 		parent.velocity = dash_velocity
