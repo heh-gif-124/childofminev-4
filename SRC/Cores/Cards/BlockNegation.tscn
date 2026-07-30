@@ -6,8 +6,6 @@
 
 [node name="Card" type="TextureRect" unique_id=247006259]
 texture_filter = 3
-mouse_filter = 2
-mouse_behavior_recursive = 1
 texture = ExtResource("1_p4uwe")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=536197344]
@@ -62,9 +60,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -31.5
+offset_left = -31.0
 offset_top = -68.0
-offset_right = 31.5
+offset_right = 32.0
 offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 0
