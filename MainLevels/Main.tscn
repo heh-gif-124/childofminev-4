@@ -306,9 +306,9 @@ show_percentage = false
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/PlayerHUD" unique_id=2063707483]
 layout_mode = 0
 offset_left = 79.0
-offset_top = -19.0
+offset_top = -14.0
 offset_right = 223.0
-offset_bottom = -3.0
+offset_bottom = 2.0
 theme_override_constants/separation = 5
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/PlayerHUD/HBoxContainer" unique_id=1850385185]
