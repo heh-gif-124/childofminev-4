@@ -2,8 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://dpxjo42gat32c" path="res://Sprites/Sprites/misc/Card.png" id="1_p4uwe"]
 [ext_resource type="Texture2D" uid="uid://d7wtn8my3c8v" path="res://Sprites/Sprites/misc/TetherField.png" id="2_yman1"]
+[ext_resource type="Texture2D" uid="uid://b2y01q7goh2po" path="res://Sprites/Sprites/misc/Card_Desc_BG.png" id="3_yman1"]
 
 [node name="Card" type="TextureRect" unique_id=247006259]
+texture_filter = 3
+mouse_filter = 2
+mouse_behavior_recursive = 1
 texture = ExtResource("1_p4uwe")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=536197344]
@@ -19,6 +23,7 @@ grow_horizontal = 2
 texture = ExtResource("2_yman1")
 
 [node name="Label" type="Label" parent="." unique_id=1828601413]
+z_index = 2
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -33,11 +38,34 @@ text = "Blocking spree"
 horizontal_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1611781642]
+z_index = 2
 layout_mode = 0
 offset_left = 8.0
-offset_top = 152.0
+offset_top = 139.0
 offset_right = 294.0
-offset_bottom = 335.0
+offset_bottom = 322.0
 text = "\"This wouldve been useless if it weren't for the fact this is argueably the most best upgrade in our run.\"
 
 Increases the block negation by 2 (which totals up to 4 block negation)"
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1760229857]
+layout_mode = 0
+offset_top = 139.0
+offset_right = 300.0
+offset_bottom = 322.0
+texture = ExtResource("3_yman1")
+
+[node name="Button" type="Button" parent="." unique_id=344953719]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -31.5
+offset_top = -68.0
+offset_right = 31.5
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "SELECT"
