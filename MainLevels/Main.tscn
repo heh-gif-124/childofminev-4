@@ -605,13 +605,6 @@ theme_override_font_sizes/font_size = 12
 text = "TELEPORTER"
 horizontal_alignment = 1
 
-[node name="EnemySpawner" type="Timer" parent="." unique_id=464546854 node_paths=PackedStringArray("player")]
-wait_time = 3.0
-autostart = true
-script = ExtResource("10_wkp8b")
-player = NodePath("../Player")
-metadata/_custom_type_script = "uid://c578od588wwrt"
-
 [node name="Water" type="Sprite2D" parent="." unique_id=15608796 node_paths=PackedStringArray("target")]
 z_index = 1
 material = ExtResource("17_kjvhd")
@@ -642,3 +635,9 @@ script = ExtResource("28_f15k2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ResetField" unique_id=1192301679]
 position = Vector2(0, 83.5)
 shape = SubResource("RectangleShape2D_mfi7u")
+
+[node name="EnemySpawner" type="Node" parent="." unique_id=349910997 node_paths=PackedStringArray("player", "room_manager")]
+script = ExtResource("10_wkp8b")
+player = NodePath("../Player")
+room_manager = NodePath("../room_generation")
+metadata/_custom_type_script = "uid://c578od588wwrt"
