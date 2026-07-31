@@ -1,14 +1,20 @@
 [gd_scene format=3 uid="uid://cr1htrvf1yjwf"]
 
+[ext_resource type="Script" uid="uid://c4qfiyg42abpg" path="res://SRC/Enemies/EnemyAI/Parent/PARENT.gd" id="1_ieafk"]
 [ext_resource type="Texture2D" uid="uid://cb1i2d18krlpa" path="res://Sprites/Sprites/Enemies/PARENT/Parent_head.png" id="1_jm8rs"]
 [ext_resource type="Texture2D" uid="uid://cmf8sgd7sk4fy" path="res://Sprites/Sprites/Enemies/PARENT/Parent_body.png" id="2_m5dgc"]
 [ext_resource type="Script" uid="uid://dkvtknpa8lsea" path="res://SRC/Enemies/EnemyAI/DetectRange.gd" id="3_2eken"]
+[ext_resource type="Script" uid="uid://b86shoce52ein" path="res://SRC/Enemies/EnemyAI/State_handler.gd" id="4_6fkdw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jm8rs"]
 radius = 21.0
 height = 200.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6fkdw"]
+radius = 495.101
+
 [node name="Parent" type="CharacterBody2D" unique_id=1762661495]
+script = ExtResource("1_ieafk")
 
 [node name="Head" type="Sprite2D" parent="." unique_id=1543409325]
 texture_filter = 3
@@ -24,6 +30,16 @@ texture = ExtResource("2_m5dgc")
 position = Vector2(0, 77)
 shape = SubResource("CapsuleShape2D_jm8rs")
 
-[node name="range_detector" type="Area2D" parent="." unique_id=562375687]
+[node name="range_detector" type="Area2D" parent="." unique_id=562375687 node_paths=PackedStringArray("state_handler_used")]
 script = ExtResource("3_2eken")
+state_handler_used = NodePath("../state_handler")
 metadata/_custom_type_script = "uid://dkvtknpa8lsea"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="range_detector" unique_id=33665524]
+position = Vector2(0, 161)
+shape = SubResource("CircleShape2D_6fkdw")
+
+[node name="state_handler" type="Node" parent="." unique_id=132440719]
+script = ExtResource("4_6fkdw")
+states = ["Idle", "Walk", "Attack"]
+metadata/_custom_type_script = "uid://b86shoce52ein"
