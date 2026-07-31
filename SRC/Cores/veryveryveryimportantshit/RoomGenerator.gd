@@ -137,6 +137,3 @@ func _generate_initial_platforms() -> void:
 			var max_x = target_x + (room_spacing / 2)
 			r.global_position.x = randf_range(min_x, max_x)
 			
-			# --- ANIMATION FOR THE REVERIE ---
-			# Make it slide up smoothly from just below its target position
-			r.global_position.y = randf_range(-550,-400)
