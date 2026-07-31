@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://ca5evq4803a4n" path="res://SRC/Objects/Shelter/Shelter_Inside.tscn" id="25_mxvw5"]
 [ext_resource type="Script" uid="uid://b2bbmp2nxvfaa" path="res://SRC/Cores/veryveryveryimportantshit/reset_field.gd" id="28_f15k2"]
 [ext_resource type="Script" uid="uid://c6r0ylwgfuvju" path="res://SRC/Cores/veryveryveryimportantshit/PassiveHandler.gd" id="29_w3rk5"]
+[ext_resource type="PackedScene" uid="uid://cr1htrvf1yjwf" path="res://SRC/Enemies/Parent.tscn" id="33_um2oo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0du0"]
 size = Vector2(864, 20)
@@ -699,3 +700,6 @@ shape = SubResource("RectangleShape2D_mfi7u")
 script = ExtResource("10_wkp8b")
 player = NodePath("../Player")
 metadata/_custom_type_script = "uid://c578od588wwrt"
+
+[node name="Parent" parent="." unique_id=1762661495 instance=ExtResource("33_um2oo")]
+position = Vector2(311, -362)
