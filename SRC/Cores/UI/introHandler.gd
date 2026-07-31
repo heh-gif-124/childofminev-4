@@ -6,4 +6,4 @@ func _ready() -> void:
 	$AnimationPlayer.play("Intro")
 
 func _change():
-	get_tree().change_scene_to_file("res://Menu.tscn")
+	get_tree().change_scene_to_file("res://MainLevels/Menu.tscn")

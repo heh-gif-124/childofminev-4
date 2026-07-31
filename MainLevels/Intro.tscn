@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://csdh58i0rqdgw"]
 
 [ext_resource type="Script" uid="uid://bntxys5tdagmc" path="res://SRC/Cores/UI/introHandler.gd" id="1_kvudu"]
+[ext_resource type="Shader" uid="uid://bk5sauc5apclu" path="res://Shaders/squiggle.gdshader" id="2_l5tea"]
 
 [sub_resource type="Animation" id="Animation_7eg0p"]
 resource_name = "Intro"
@@ -77,6 +78,20 @@ _data = {
 &"RESET": SubResource("Animation_gjrx4")
 }
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u1qui"]
+frequency = 0.0016
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nmd57"]
+noise = SubResource("FastNoiseLite_u1qui")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5bdln"]
+shader = ExtResource("2_l5tea")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 1.0
+shader_parameter/fps = 6.0
+shader_parameter/noise = SubResource("NoiseTexture2D_nmd57")
+
 [node name="Intro" type="Control" unique_id=745020515]
 layout_mode = 3
 anchors_preset = 15
@@ -98,21 +113,25 @@ grow_vertical = 2
 libraries/ = SubResource("AnimationLibrary_sb8jg")
 
 [node name="Label" type="Label" parent="." unique_id=899691789]
+texture_filter = 3
+material = SubResource("ShaderMaterial_5bdln")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -215.0
+offset_top = -85.0
+offset_right = 215.0
+offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
 text = "A Game made by Particlis"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="." unique_id=1137076651]
 layout_mode = 0
