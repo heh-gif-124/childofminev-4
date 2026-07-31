@@ -136,4 +136,4 @@ func _generate_initial_platforms() -> void:
 			var min_x = target_x - (room_spacing / 2)
 			var max_x = target_x + (room_spacing / 2)
 			r.global_position.x = randf_range(min_x, max_x)
-			
+			r.global_position.y = -450

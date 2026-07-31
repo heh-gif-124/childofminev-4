@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://pl2xjbk5cmmo" path="res://SRC/Cores/Interact.gd" id="2_bp2j6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_173sa"]
-size = Vector2(32, 63)
+size = Vector2(44, 63)
 
 [node name="ViscacyL" type="Node2D" unique_id=1541325972]
 script = ExtResource("1_bp2j6")
@@ -26,3 +26,4 @@ offset_left = -21.0
 offset_top = -54.0
 offset_right = 19.0
 offset_bottom = -31.0
+text = "USE"
