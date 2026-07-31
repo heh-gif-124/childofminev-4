@@ -27,10 +27,12 @@ scale = Vector2(0.789, 0.789)
 texture = ExtResource("2_m5dgc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=742810004]
+visible = false
 position = Vector2(0, 77)
 shape = SubResource("CapsuleShape2D_jm8rs")
 
 [node name="range_detector" type="Area2D" parent="." unique_id=562375687 node_paths=PackedStringArray("state_handler_used")]
+visible = false
 script = ExtResource("3_2eken")
 state_handler_used = NodePath("../state_handler")
 metadata/_custom_type_script = "uid://dkvtknpa8lsea"
