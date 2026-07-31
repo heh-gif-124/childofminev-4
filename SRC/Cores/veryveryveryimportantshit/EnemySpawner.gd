@@ -7,17 +7,22 @@ class_name EnemySpawner
 @export var enemy_spawn_per_wave : int = 3
 @export var room_manager : room_generation
 
+@export_subgroup("Debugging")
+@export var disabled = false
+
 var enemy_on_field : int = 0
 @onready var parent = get_parent()
 
 func _ready() -> void:
-	# Call deferred to ensure player and parent nodes are fully ready in the tree
-	call_deferred("spawn_wave")
+	if disabled == false:
+		# Call deferred to ensure player and parent nodes are fully ready in the tree
+		call_deferred("spawn_wave")
 
 func _physics_process(_delta: float) -> void:
 	# Keep this as a safe check if a wave dies out
-	if enemy_on_field <= 0:
-		spawn_wave()
+	if disabled == false:
+		if enemy_on_field <= 0:
+			spawn_wave()
 
 func spawn_wave() -> void:
 	# Prevent spawning if we already have enemies active
