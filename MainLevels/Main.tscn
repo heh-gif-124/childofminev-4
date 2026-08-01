@@ -27,11 +27,8 @@
 [ext_resource type="Script" uid="uid://ctd27s6jpqorm" path="res://SRC/Cores/UI/button_Skill.gd" id="18_sqvbp"]
 [ext_resource type="Script" uid="uid://orgarsiwe0q4" path="res://SRC/Cores/veryveryveryimportantshit/coordinate_locking.gd" id="19_5tuhn"]
 [ext_resource type="Script" uid="uid://ckr7rxt40nu16" path="res://SRC/Cores/veryveryveryimportantshit/SkillManager.gd" id="19_sqvbp"]
-[ext_resource type="PackedScene" uid="uid://btuqdlg60kvgc" path="res://SRC/Objects/Shelter/Shelter.tscn" id="24_hhcpw"]
-[ext_resource type="PackedScene" uid="uid://ca5evq4803a4n" path="res://SRC/Objects/Shelter/Shelter_Inside.tscn" id="25_mxvw5"]
 [ext_resource type="Script" uid="uid://b2bbmp2nxvfaa" path="res://SRC/Cores/veryveryveryimportantshit/reset_field.gd" id="28_f15k2"]
 [ext_resource type="Script" uid="uid://c6r0ylwgfuvju" path="res://SRC/Cores/veryveryveryimportantshit/PassiveHandler.gd" id="29_w3rk5"]
-[ext_resource type="PackedScene" uid="uid://cr1htrvf1yjwf" path="res://SRC/Enemies/Parent.tscn" id="33_um2oo"]
 [ext_resource type="PackedScene" uid="uid://c0nbmlkeompc5" path="res://SRC/Cores/Monoliths/Monolith_list/Viscacy_L.tscn" id="34_wramk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0du0"]
@@ -696,14 +693,6 @@ y_lock = true
 target = NodePath("../Player")
 metadata/_edit_lock_ = true
 
-[node name="Shelter" parent="." unique_id=401941425 instance=ExtResource("24_hhcpw")]
-z_index = -1
-position = Vector2(1, -13)
-
-[node name="ShelterInside" parent="." unique_id=2005964987 instance=ExtResource("25_mxvw5")]
-z_index = -1
-position = Vector2(-27, 4716)
-
 [node name="upgrade_Handler" type="Node" parent="." unique_id=1307346945]
 script = ExtResource("29_w3rk5")
 metadata/_custom_type_script = "uid://c6r0ylwgfuvju"
@@ -721,9 +710,6 @@ script = ExtResource("10_wkp8b")
 player = NodePath("../Player")
 disabled = true
 metadata/_custom_type_script = "uid://c578od588wwrt"
-
-[node name="Parent" parent="." unique_id=1762661495 instance=ExtResource("33_um2oo")]
-position = Vector2(311, -362)
 
 [node name="ViscacyL" parent="." unique_id=1541325972 instance=ExtResource("34_wramk")]
 position = Vector2(-228, -47)

@@ -7,12 +7,21 @@ func _ready():
 	# If your signal emits something (e.g. who interacted):
 	$Interact_handler.interacted.connect(func(_user = null):
 		var player = get_tree().get_first_node_in_group("Player")
-		if player:
-			player.max_hp += 10
-			player.hp += 10
-			print("I TOOK IT ALREADY")
-			print(player.max_hp)
-			queue_free()
+		var staff = get_tree().get_first_node_in_group("staff")
+		if id == "HP":
+			if player:
+				player.max_hp += 10
+				player.hp += 10
+				print("I TOOK IT ALREADY")
+				print(player.max_hp)
+				queue_free()
+		elif id == "MP":
+			if staff:
+				staff.max_energy += 5
+				staff.energy += 5
+				print("I TOOK IT ALREADY")
+				print(player.max_hp)
+				queue_free()
 	)
 
 
