@@ -5,6 +5,7 @@ var extra_dash = 1
 var is_dashing = false
 var DASH_SPEED = 1100
 var dash_velocity = Vector2.ZERO
+
 # Gravity shit
 @export_category("Jump mechanics")
 @export var gravity := 870.9
@@ -12,6 +13,7 @@ var dash_velocity = Vector2.ZERO
 @export var jump_time_to_peak: float = 0.4
 @export var jump_time_to_descent: float = 0.3
 @onready var sprite = $"../AnimatedSprite2D"
+@export var dust_particles : GPUParticles2D
 # Actual jump issues
 @onready var jump_velocity: float = -2.0 * jump_height / jump_time_to_peak
 @onready var jump_gravity: float = -2.0 * jump_height / (jump_time_to_peak * jump_time_to_peak)
@@ -34,7 +36,7 @@ func _process(delta: float) -> void:
 		# Override normal movement and apply the fixed dash speed
 		parent.velocity = dash_velocity
 	if parent.is_on_floor():
-		extra_dash = 1
+		dust_particles.emitting = true
 	if parent.is_on_floor():
 		coyote_timer = coyote_frames
 	else:
@@ -49,7 +51,7 @@ func _process(delta: float) -> void:
 	# Apply Gravity
 	if not parent.is_on_floor():
 		parent.velocity.y += gravity * delta
-
+	
 	# Execute Jump
 	if buffer_timer > 0 and coyote_timer > 0:
 		parent.velocity.y = jump_velocity

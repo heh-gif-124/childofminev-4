@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dd6g6w3kkrfm1" path="res://Sprites/Sprites/staff/Projectile/Projectile_explode_readying.png" id="6_feo30"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bihh0"]
+size = Vector2(30, 14)
 
 [sub_resource type="Animation" id="Animation_0mhi6"]
 length = 0.001

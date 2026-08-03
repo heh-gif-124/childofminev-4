@@ -12,14 +12,14 @@
   <component name="ChangeListManager">
     <list default="true" id="a7828865-1bb8-40ab-aa15-0de6e169320e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainLevels/Lobby.tscn" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MainLevels/Main.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/MainLevels/Main.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SRC/Cores/Monoliths/Monolith_base.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Cores/Monoliths/Monolith_base.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/EnemySpawner.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/EnemySpawner.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/Globals.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/Globals.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SRC/Objects/Portal.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Objects/Portal.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Objects/Projectiles/Projectile.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Objects/Projectiles/Projectile.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Player/JumpHandler.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Player/JumpHandler.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SRC/Player/Player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Player/Player.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SRC/Player/player.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Player/player.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Staff/Staff.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Staff/Staff.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sprites/Sprites/Player/Plyer_Sprites/Player_move.png" beforeDir="false" afterPath="$PROJECT_DIR$/Sprites/Sprites/Player/Plyer_Sprites/Player_move.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sprites/Sprites/staff/Projectile.png" beforeDir="false" afterPath="$PROJECT_DIR$/Sprites/Sprites/staff/Projectile.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sprites/Sprites/staff/Staff.png" beforeDir="false" afterPath="$PROJECT_DIR$/Sprites/Sprites/staff/Staff.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

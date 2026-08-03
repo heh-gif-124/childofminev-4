@@ -30,8 +30,8 @@
 [ext_resource type="PackedScene" uid="uid://cj1mhx48mjxni" path="res://SRC/Cores/Monoliths/Monolith_list/Damage_L.tscn" id="31_tnjyj"]
 [ext_resource type="Texture2D" uid="uid://dna7vj7vy7uor" path="res://Sprites/tilemaps/Background_Image/1.png" id="31_um2oo"]
 [ext_resource type="PackedScene" uid="uid://dql5quj1rq08s" path="res://SRC/Cores/Monoliths/Monolith_list/Energy_L.tscn" id="32_ht3i3"]
-[ext_resource type="Texture2D" uid="uid://pi4csifyfccj" path="res://Sprites/tilemaps/Background_Image/3.png" id="32_um2oo"]
 [ext_resource type="Texture2D" uid="uid://b1jp8eous7df4" path="res://Sprites/tilemaps/Background_Image/4.png" id="33_um2oo"]
+[ext_resource type="Texture2D" uid="uid://bmyc0wygq8ccd" path="res://Sprites/tilemaps/Background_Image/Fake_Sun.png" id="34_h87hl"]
 [ext_resource type="Texture2D" uid="uid://biodemv073hxw" path="res://Sprites/tilemaps/Background_Image/5.png" id="34_onoe7"]
 [ext_resource type="PackedScene" uid="uid://c0nbmlkeompc5" path="res://SRC/Cores/Monoliths/Monolith_list/Viscacy_L.tscn" id="34_wramk"]
 
@@ -211,20 +211,20 @@ texture_filter = 3
 [node name="Player" parent="." unique_id=927071234 instance=ExtResource("1_glv2v")]
 position = Vector2(1, -49)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=7285632]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=239275371]
 position = Vector2(0, -96)
 offset = Vector2(0, -35)
 ignore_rotation = false
 position_smoothing_enabled = true
 
-[node name="Marker2D" type="Marker2D" parent="Player" unique_id=2096851390]
+[node name="Marker2D" type="Marker2D" parent="Player" unique_id=794276953]
 position = Vector2(0, 16)
 
-[node name="SkillConjureManager" type="Node" parent="Player" unique_id=1851834593]
+[node name="SkillConjureManager" type="Node" parent="Player" unique_id=9232331]
 script = ExtResource("4_sqvbp")
 metadata/_custom_type_script = "uid://bvityt0xt6soq"
 
-[node name="heal" type="Node" parent="Player/SkillConjureManager" unique_id=1885843521]
+[node name="heal" type="Node" parent="Player/SkillConjureManager" unique_id=24474988]
 script = ExtResource("4_xrxkg")
 metadata/_custom_type_script = "uid://byxfhkfjapjva"
 
@@ -684,9 +684,8 @@ script = ExtResource("28_f15k2")
 position = Vector2(0, 83.5)
 shape = SubResource("RectangleShape2D_mfi7u")
 
-[node name="EnemySpawner" type="Node" parent="." unique_id=349910997 node_paths=PackedStringArray("player", "room_manager")]
+[node name="EnemySpawner" type="Node" parent="." unique_id=349910997 node_paths=PackedStringArray("room_manager")]
 script = ExtResource("10_wkp8b")
-player = NodePath("../Player")
 room_manager = NodePath("../room_generation")
 disabled = true
 metadata/_custom_type_script = "uid://c578od588wwrt"
@@ -705,6 +704,7 @@ id = "MP"
 z_index = -500
 
 [node name="Parallax2D" type="Parallax2D" parent="FFFFF" unique_id=1608463055]
+z_index = -7
 scroll_scale = Vector2(0.1, 1)
 repeat_size = Vector2(520, 100)
 repeat_times = 100
@@ -715,7 +715,8 @@ scale = Vector2(2.0069444, 2.3734567)
 texture = ExtResource("31_um2oo")
 
 [node name="Parallax2D2" type="Parallax2D" parent="FFFFF" unique_id=720617681]
-scroll_scale = Vector2(0.2, 1)
+z_index = -5
+scroll_scale = Vector2(0.7, 1)
 repeat_size = Vector2(570, 0)
 autoscroll = Vector2(-1, 0)
 repeat_times = 100
@@ -726,7 +727,7 @@ scale = Vector2(2.0069444, 2.3734567)
 texture = ExtResource("33_um2oo")
 
 [node name="Parallax2D3" type="Parallax2D" parent="FFFFF" unique_id=1500331738]
-scroll_scale = Vector2(0.1, 1)
+scroll_scale = Vector2(0.8, 1)
 repeat_size = Vector2(520, 0)
 autoscroll = Vector2(-12, 0)
 repeat_times = 100
@@ -736,23 +737,23 @@ position = Vector2(0, -117.499985)
 scale = Vector2(2.0069444, 2.3734567)
 texture = ExtResource("34_onoe7")
 
-[node name="Parallax2D4" type="Parallax2D" parent="FFFFF" unique_id=1579566928]
-scroll_scale = Vector2(0.1, 1)
-repeat_size = Vector2(520, 0)
-autoscroll = Vector2(12, 0)
-repeat_times = 100
-
-[node name="Sprite2D" type="Sprite2D" parent="FFFFF/Parallax2D4" unique_id=1435657476]
-position = Vector2(0, -117.499985)
-scale = Vector2(2.0069444, 2.3734567)
-texture = ExtResource("32_um2oo")
-
 [node name="Parallax2D5" type="Parallax2D" parent="FFFFF" unique_id=182212655]
 
 [node name="Sprite2D" type="Sprite2D" parent="FFFFF/Parallax2D5" unique_id=1624240969]
 position = Vector2(210.5, -208)
 scale = Vector2(4.328125, 7.0781255)
 texture = ExtResource("31_ht3i3")
+
+[node name="Parallax2D6" type="Parallax2D" parent="FFFFF" unique_id=74222257]
+modulate = Color(1, 1, 1, 0.2)
+z_index = -6
+scroll_scale = Vector2(0.25, 0.45)
+scroll_offset = Vector2(-957, 33)
+
+[node name="Sprite2D" type="Sprite2D" parent="FFFFF/Parallax2D6" unique_id=347151606]
+position = Vector2(352, -422)
+scale = Vector2(4, 4)
+texture = ExtResource("34_h87hl")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=128906952]
 environment = SubResource("Environment_ht3i3")

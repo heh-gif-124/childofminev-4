@@ -8,10 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://clcwm2wdrxgju" path="res://Sprites/Sprites/Player/Plyer_Sprites/player_jump.png" id="4_66w6c"]
 [ext_resource type="Texture2D" uid="uid://nhu1a0yrdefy" path="res://Sprites/Sprites/Player/Plyer_Sprites/Player_move.png" id="4_qpdg2"]
 [ext_resource type="Texture2D" uid="uid://5qts54md1rvb" path="res://Sprites/Sprites/Player/Plyer_Sprites/player_move_back.png" id="5_vkgy7"]
+[ext_resource type="Texture2D" uid="uid://c7r34pjlg663" path="res://Sprites/Sprites/misc/Dust.png" id="8_1rywk"]
 [ext_resource type="Texture2D" uid="uid://cm1pstqx003kp" path="res://Sprites/Sprites/Objects/Upgrades_vfx/Shield.png" id="8_pb72n"]
 [ext_resource type="Texture2D" uid="uid://b5gpxivqow8mc" path="res://Sprites/Sprites/Player/Block_break.png" id="10_6opif"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vkgy7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_unxx3"]
 radius = 15.0
@@ -80,6 +79,37 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Curve" id="Curve_bf0s0"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, -191.02039), 0.0, 0.0, 0, 0, Vector2(1, 110.2041), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1rywk"]
+curve = SubResource("Curve_bf0s0")
+
+[sub_resource type="Curve" id="Curve_u8kuu"]
+_data = [Vector2(0.033834584, 0.39795923), 0.0, -0.41189554, 0, 1, Vector2(1, 0), -0.41189554, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_u8kuu"]
+curve = SubResource("Curve_u8kuu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bf0s0"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(12, 1, 0)
+spread = 180.0
+angular_velocity_min = 1.0
+angular_velocity_max = 1.0
+angular_velocity_curve = SubResource("CurveTexture_1rywk")
+gravity = Vector3(0, -150, 0)
+radial_accel_min = -69.23
+radial_accel_max = 69.229996
+tangential_accel_min = 36.539997
+tangential_accel_max = 36.539997
+scale_curve = SubResource("CurveTexture_u8kuu")
+
 [sub_resource type="Animation" id="Animation_pb72n"]
 resource_name = "Block_Start"
 tracks/0/type = "value"
@@ -133,7 +163,6 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=927071234 groups=["Player"]]
-material = SubResource("ShaderMaterial_vkgy7")
 script = ExtResource("1_8qye1")
 
 [node name="movement_handler" type="Node" parent="." unique_id=1322329331]
@@ -147,14 +176,28 @@ shape = SubResource("CapsuleShape2D_unxx3")
 texture_filter = 3
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_qpdg2")
-animation = &"Break"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite2D" unique_id=772772760]
+modulate = Color(0.08235294, 0.08235294, 0.08235294, 1)
+z_index = -1
+position = Vector2(0, 32)
+emitting = false
+amount = 44
+sub_emitter = NodePath(".")
+texture = ExtResource("8_1rywk")
+lifetime = 0.13
+one_shot = true
+randomness = 0.37
+trail_lifetime = 2.1599999999999997
+process_material = SubResource("ParticleProcessMaterial_bf0s0")
 
 [node name="Ghost_Timer" type="Timer" parent="." unique_id=182034078]
 wait_time = 0.05
 autostart = true
 
-[node name="jump_handler" type="Node" parent="." unique_id=313076819]
+[node name="jump_handler" type="Node" parent="." unique_id=313076819 node_paths=PackedStringArray("dust_particles")]
 script = ExtResource("2_n2pi2")
+dust_particles = NodePath("../AnimatedSprite2D/GPUParticles2D")
 metadata/_custom_type_script = "uid://d33p2sr3vrvps"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=80527586]
