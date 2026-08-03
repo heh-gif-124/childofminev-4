@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://vgfkd7kr1ye0" path="res://Sprites/Sprites/Objects/Teleporter.png" id="1_lbuhi"]
 [ext_resource type="Texture2D" uid="uid://d0j2fn8jy5vrp" path="res://Sprites/Sprites/VFX/Dust.png" id="2_lygpd"]
 [ext_resource type="Texture2D" uid="uid://bo6lik4h8v64s" path="res://Sprites/Sprites/Objects/DistortionRunIndicator.png" id="3_d0i14"]
+[ext_resource type="Script" uid="uid://pl2xjbk5cmmo" path="res://SRC/Cores/Interact.gd" id="4_nvckk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lygpd"]
 atlas = ExtResource("1_lbuhi")
@@ -18,7 +19,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lygpd")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Deactivated",
 "speed": 5.0
 }, {
@@ -26,7 +27,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d0i14")
 }],
-"loop": true,
+"loop": 1,
 "name": &"activated",
 "speed": 5.0
 }]
@@ -39,6 +40,9 @@ point_count = 2
 offsets = PackedFloat32Array(0, 0.69135803)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvckk"]
+size = Vector2(26, 35.333336)
+
 [node name="Portal" type="Node2D" unique_id=2139080379]
 texture_filter = 3
 position = Vector2(2, -80)
@@ -47,7 +51,7 @@ scale = Vector2(3, 3)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=335617763]
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_nvckk")
-animation = &"Deactivated"
+animation = &"activated"
 
 [node name="PortalHighLights" type="Line2D" parent="." unique_id=90006305]
 visible = false
@@ -79,3 +83,20 @@ visible = false
 position = Vector2(0, -47.000004)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("3_d0i14")
+
+[node name="Interact_handler" type="Area2D" parent="." unique_id=1422396237]
+position = Vector2(0, 15)
+script = ExtResource("4_nvckk")
+metadata/_custom_type_script = "uid://pl2xjbk5cmmo"
+
+[node name="Label" type="Label" parent="Interact_handler" unique_id=1693203009]
+offset_left = -26.666666
+offset_top = -21.999998
+offset_right = 24.333334
+offset_bottom = -5.999998
+theme_override_font_sizes/font_size = 11
+text = "ACTIVATE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact_handler" unique_id=1774921238]
+position = Vector2(0, -0.33333302)
+shape = SubResource("RectangleShape2D_nvckk")

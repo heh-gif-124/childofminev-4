@@ -16,6 +16,9 @@ var current_exp = 0
 var moneh = 0
 var scene_to_be_loaded : String
 var expmult = 1
+var dmg_mono = 0
+var mp_mono = 0
+var hp_mono = 0
 func calculate_final_damage(dmg,crit_chance:float,crit_dmg):
 	var roll = randi_range(1,100)
 	var is_crit: bool = roll <= crit_chance

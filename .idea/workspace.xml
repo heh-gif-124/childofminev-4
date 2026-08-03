@@ -12,8 +12,14 @@
   <component name="ChangeListManager">
     <list default="true" id="a7828865-1bb8-40ab-aa15-0de6e169320e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainLevels/Lobby.tscn" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MainLevels/Main.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/MainLevels/Main.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SRC/Cores/Monoliths/Monolith_base.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Cores/Monoliths/Monolith_base.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/EnemySpawner.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/EnemySpawner.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/Globals.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/Globals.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Objects/Portal.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Objects/Portal.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Player/Player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Player/Player.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Player/player.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Player/player.gd" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

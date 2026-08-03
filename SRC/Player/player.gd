@@ -1,13 +1,13 @@
 extends CharacterBody2D
 @export var start_anim = false
-var hp = 100.0
-var max_hp = 100.0
-var speed = 350
-var mouse_pos = get_global_mouse_position()
-var has_shield = false
-var block_damage_negator = 4
-var block_stamina = 50
-var is_blocking = false
+var hp := 100.0
+var max_hp := 100.0
+var speed := 350
+var mouse_pos := get_global_mouse_position()
+var has_shield := false
+var block_damage_negator := 4
+var block_stamina := 50
+var is_blocking := false
 func _process(delta: float) -> void:
 	mouse_pos = get_global_mouse_position()
 

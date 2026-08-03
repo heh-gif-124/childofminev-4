@@ -1,17 +1,18 @@
 extends Node
 class_name EnemySpawner
 
-@onready var enemy_folder = Globals.load_folder_children("res://SRC/Enemies/enemies/")
+@onready var enemy_folder := Globals.load_folder_children("res://SRC/Enemies/enemies/")
 @export var player : CharacterBody2D
 @export var max_enemies_on_field : int = 3
 @export var enemy_spawn_per_wave : int = 3
 @export var room_manager : room_generation
 
 @export_subgroup("Debugging")
-@export var disabled = false
+@export var disabled := false
+@export var room_threshold := 2
 
 var enemy_on_field : int = 0
-@onready var parent = get_parent()
+@onready var parent := get_parent()
 
 func _ready() -> void:
 	if disabled == false:
@@ -23,6 +24,11 @@ func _physics_process(_delta: float) -> void:
 	if disabled == false:
 		if enemy_on_field <= 0:
 			spawn_wave()
+	if room_manager.rooms_spawned_so_far >= room_threshold:
+		room_threshold += 2
+		max_enemies_on_field += 3
+		enemy_spawn_per_wave += 3
+	
 
 func spawn_wave() -> void:
 	# Prevent spawning if we already have enemies active

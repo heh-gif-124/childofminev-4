@@ -179,4 +179,7 @@ offset_right = 25.4
 offset_bottom = 15.0
 text = "BREAK"
 
+[node name="Timer" type="Timer" parent="." unique_id=595411297]
+one_shot = true
+
 [connection signal="timeout" from="Ghost_Timer" to="movement_handler" method="_on_ghost_timer_timeout"]
