@@ -748,7 +748,7 @@ texture = ExtResource("31_ht3i3")
 modulate = Color(1, 1, 1, 0.2)
 z_index = -6
 scroll_scale = Vector2(0.25, 0.45)
-scroll_offset = Vector2(-957, 33)
+scroll_offset = Vector2(-957, -42)
 
 [node name="Sprite2D" type="Sprite2D" parent="FFFFF/Parallax2D6" unique_id=347151606]
 position = Vector2(352, -422)
