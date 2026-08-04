@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 @export var start_anim : bool = false
 @export var parry_window : Timer
-var hp : float= 100.0
+var hp : float = 100.0
 var max_hp : float = 100.0
 var speed : float = 350
 var mouse_pos := get_global_mouse_position()
@@ -57,10 +57,10 @@ func _Hurt(dmg):
 		pass
 		parry_window.start(0)
 		Globals._stop_time(0.6,0)
-		print("Parried you dumbfuck!")
+		print("Parried!")
 	elif is_blocking == true:
 		
-		print("oh shit i got blocked")
+		print("oh no i got blocked")
 		hp -= dmg / block_damage_negator
 		block_stamina -= 10
 		print(block_stamina)
