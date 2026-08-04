@@ -210,6 +210,7 @@ texture_filter = 3
 
 [node name="Player" parent="." unique_id=927071234 instance=ExtResource("1_glv2v")]
 position = Vector2(1, -49)
+start_anim = null
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=239275371]
 position = Vector2(0, -96)

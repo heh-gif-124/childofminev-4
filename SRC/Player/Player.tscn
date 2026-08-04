@@ -162,8 +162,9 @@ _data = {
 &"RESET": SubResource("Animation_1u4tl")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=927071234 groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=927071234 node_paths=PackedStringArray("parry_window") groups=["Player"]]
 script = ExtResource("1_8qye1")
+parry_window = NodePath("Parry_window")
 
 [node name="movement_handler" type="Node" parent="." unique_id=1322329331]
 script = ExtResource("1_unxx3")
@@ -222,7 +223,8 @@ offset_right = 25.4
 offset_bottom = 15.0
 text = "BREAK"
 
-[node name="Timer" type="Timer" parent="." unique_id=595411297]
+[node name="Parry_window" type="Timer" parent="." unique_id=595411297]
+wait_time = 0.25
 one_shot = true
 
 [connection signal="timeout" from="Ghost_Timer" to="movement_handler" method="_on_ghost_timer_timeout"]

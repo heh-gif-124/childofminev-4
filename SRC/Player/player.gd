@@ -1,13 +1,22 @@
 extends CharacterBody2D
-@export var start_anim = false
-var hp := 100.0
-var max_hp := 100.0
-var speed := 350
+
+
+
+@export var start_anim : bool = false
+@export var parry_window : Timer
+var hp : float= 100.0
+var max_hp : float = 100.0
+var speed : float = 350
 var mouse_pos := get_global_mouse_position()
-var has_shield := false
-var block_damage_negator := 4
-var block_stamina := 50
-var is_blocking := false
+var has_shield : bool = false
+var block_damage_negator : int = 4
+var block_stamina : int = 50
+var is_blocking : bool= false
+var parrying : bool = false
+
+func _ready() -> void:
+	parry_window.timeout.connect(_expire_window)
+
 func _process(delta: float) -> void:
 	mouse_pos = get_global_mouse_position()
 
@@ -28,8 +37,12 @@ func _input(event: InputEvent) -> void:
 			$AnimatedSprite2D.play("default")
 	if Input.is_action_pressed("Parry"):
 		is_blocking = true
+		
+		
 		print("IMBLOCKING")
 	if Input.is_action_just_pressed("Parry"):
+		parry_window.start(0)
+		parrying = true
 		$MainPlayerAnimationHandler.play("Block_Start")
 		
 	elif Input.is_action_just_released("Parry"):
@@ -40,10 +53,20 @@ func _input(event: InputEvent) -> void:
 func _Hurt(dmg):
 	if has_shield == true:
 		pass
+	elif parrying == true:
+		pass
+		parry_window.start(0)
+		Globals._stop_time(0.6,0)
+		print("Parried you dumbfuck!")
 	elif is_blocking == true:
+		
 		print("oh shit i got blocked")
 		hp -= dmg / block_damage_negator
 		block_stamina -= 10
 		print(block_stamina)
 	else:
 		hp -= dmg
+
+func _expire_window() -> void:
+	parrying = false
+	print("Parry expired")

@@ -57,3 +57,8 @@ func load_folder_children(path: String) -> Array:
 		print("An error occurred when trying to access the path: ", path)
 		
 	return loaded_assets
+
+func _stop_time(duration:float,time:float) -> void:
+	Engine.time_scale = time
+	await get_tree().create_timer(duration,true,false,true).timeout
+	Engine.time_scale = 1
