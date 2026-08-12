@@ -3,6 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://dsirf87irop5t" path="res://Sprites/tilemaps/tilemap_1.png" id="1_y14ni"]
 [ext_resource type="Texture2D" uid="uid://p08maih7sp2n" path="res://Sprites/Sprites/Objects/Statue.png" id="2_5hj83"]
 [ext_resource type="Texture2D" uid="uid://d0j2fn8jy5vrp" path="res://Sprites/Sprites/VFX/Dust.png" id="3_5hj83"]
+[ext_resource type="Script" uid="uid://dm5nglv0ol1fk" path="res://SRC/Levels/RoomManager.gd" id="4_ly7q0"]
+[ext_resource type="PackedScene" uid="uid://c0nbmlkeompc5" path="res://SRC/Objects/Monoliths/Monolith_list/Viscacy_L.tscn" id="5_pw60x"]
+[ext_resource type="PackedScene" uid="uid://dql5quj1rq08s" path="res://SRC/Objects/Monoliths/Monolith_list/Energy_L.tscn" id="6_7qxme"]
+[ext_resource type="PackedScene" uid="uid://cj1mhx48mjxni" path="res://SRC/Objects/Monoliths/Monolith_list/Damage_L.tscn" id="7_1l3bd"]
+[ext_resource type="PackedScene" uid="uid://cn5p5ngk2vsh2" path="res://SRC/Objects/Misc/Foliage_1.tscn" id="8_pw60x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv2eh"]
 texture = ExtResource("1_y14ni")
@@ -95,3 +100,8 @@ emission_rect_extents = Vector2(1, 350)
 gravity = Vector2(350, 0)
 scale_amount_min = 0.25
 scale_amount_max = 0.25
+
+[node name="RoomManager" type="Node" parent="." unique_id=762571114]
+script = ExtResource("4_ly7q0")
+trinkets = Array[PackedScene]([ExtResource("5_pw60x"), ExtResource("6_7qxme"), ExtResource("7_1l3bd"), ExtResource("8_pw60x")])
+metadata/_custom_type_script = "uid://dm5nglv0ol1fk"

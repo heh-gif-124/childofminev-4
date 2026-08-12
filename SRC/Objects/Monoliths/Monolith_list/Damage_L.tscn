@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cj1mhx48mjxni"]
 
-[ext_resource type="Script" uid="uid://b2x1lv31oudiy" path="res://SRC/Cores/Monoliths/Monolith_base.gd" id="1_p70gp"]
+[ext_resource type="Script" uid="uid://b2x1lv31oudiy" path="res://SRC/Objects/Monoliths/Monolith_base.gd" id="1_p70gp"]
 [ext_resource type="Texture2D" uid="uid://cih10m0m7032a" path="res://Sprites/tilemaps/Monoliths/Attack_increase_monolith.png" id="2_p70gp"]
 [ext_resource type="Script" uid="uid://pl2xjbk5cmmo" path="res://SRC/Cores/Interact.gd" id="3_s8xw7"]
 

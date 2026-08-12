@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c7r34pjlg663" path="res://Sprites/Sprites/misc/Dust.png" id="8_1rywk"]
 [ext_resource type="Texture2D" uid="uid://cm1pstqx003kp" path="res://Sprites/Sprites/Objects/Upgrades_vfx/Shield.png" id="8_pb72n"]
 [ext_resource type="Texture2D" uid="uid://b5gpxivqow8mc" path="res://Sprites/Sprites/Player/Block_break.png" id="10_6opif"]
+[ext_resource type="Shader" uid="uid://b8n6srcnftfka" path="res://Shaders/Shield.gdshader" id="11_u8kuu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_unxx3"]
 radius = 15.0
@@ -119,10 +120,10 @@ tracks/0/path = NodePath("Sprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.75),
-"transitions": PackedFloat32Array(0.27739242, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.45062527, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(1.5, 1.5)]
+"values": [Vector2(1e-05, 1e-05), Vector2(2, 2)]
 }
 
 [sub_resource type="Animation" id="Animation_6opif"]
@@ -134,10 +135,10 @@ tracks/0/path = NodePath("Sprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.75),
-"transitions": PackedFloat32Array(0.27739242, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.4204483, 1),
 "update": 0,
-"values": [Vector2(1.5, 1.5), Vector2(0, 0)]
+"values": [Vector2(2, 2), Vector2(1e-05, 1e-05)]
 }
 
 [sub_resource type="Animation" id="Animation_1u4tl"]
@@ -152,7 +153,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(1e-05, 1e-05)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6opif"]
@@ -162,12 +163,46 @@ _data = {
 &"RESET": SubResource("Animation_1u4tl")
 }
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bf0s0"]
+noise_type = 2
+frequency = 0.0042
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u8kuu"]
+noise = SubResource("FastNoiseLite_bf0s0")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u8kuu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v0480"]
+noise = SubResource("FastNoiseLite_u8kuu")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ft5qu"]
+shader = ExtResource("11_u8kuu")
+shader_parameter/current_mana = 0.5
+shader_parameter/max_mana = 1.0
+shader_parameter/rank_advance_mana = 1.0
+shader_parameter/inset = 0.8
+shader_parameter/groove_opacity = 0.5
+shader_parameter/groove_speed = 0.1
+shader_parameter/groove_width = 0.075
+shader_parameter/groove_distance = 0.3
+shader_parameter/noise = SubResource("NoiseTexture2D_v0480")
+shader_parameter/groovy_noise = SubResource("NoiseTexture2D_u8kuu")
+shader_parameter/border_color = Color(0.34363267, 0.54828876, 0.99999565, 1)
+shader_parameter/border_width = 0.1
+shader_parameter/border_speed = 0.02
+shader_parameter/glow_strength = 0.5
+shader_parameter/mana_color = Color(0, 0, 0, 0)
+
 [node name="Player" type="CharacterBody2D" unique_id=927071234 node_paths=PackedStringArray("parry_window") groups=["Player"]]
 script = ExtResource("1_8qye1")
 parry_window = NodePath("Parry_window")
 
-[node name="movement_handler" type="Node" parent="." unique_id=1322329331]
+[node name="movement_handler" type="Node" parent="." unique_id=1322329331 node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_unxx3")
+sprite = NodePath("../AnimatedSprite2D")
 metadata/_custom_type_script = "uid://cquc550nrg60k"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1477249815]
@@ -201,10 +236,6 @@ script = ExtResource("2_n2pi2")
 dust_particles = NodePath("../AnimatedSprite2D/GPUParticles2D")
 metadata/_custom_type_script = "uid://d33p2sr3vrvps"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=80527586]
-scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("8_pb72n")
-
 [node name="MainPlayerAnimationHandler" type="AnimationPlayer" parent="." unique_id=704587038]
 libraries/ = SubResource("AnimationLibrary_6opif")
 
@@ -226,5 +257,11 @@ text = "BREAK"
 [node name="Parry_window" type="Timer" parent="." unique_id=595411297]
 wait_time = 0.25
 one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1896166783]
+texture_filter = 3
+material = SubResource("ShaderMaterial_ft5qu")
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("8_pb72n")
 
 [connection signal="timeout" from="Ghost_Timer" to="movement_handler" method="_on_ghost_timer_timeout"]

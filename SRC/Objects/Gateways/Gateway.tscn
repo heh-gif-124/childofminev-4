@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dpeu2t1crji1w"]
+
+[ext_resource type="Script" uid="uid://pl2xjbk5cmmo" path="res://SRC/Cores/Interact.gd" id="1_onfrb"]
+[ext_resource type="Texture2D" uid="uid://bnikxnr3tswun" path="res://Sprites/tilemaps/Gateway.png" id="2_fhkgf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhkgf"]
+
+[node name="Gateway" type="Node2D" unique_id=2306046]
+
+[node name="Interact_handler" type="Area2D" parent="." unique_id=1832459924]
+script = ExtResource("1_onfrb")
+metadata/_custom_type_script = "uid://pl2xjbk5cmmo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact_handler" unique_id=441424701]
+shape = SubResource("RectangleShape2D_fhkgf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1628548246]
+texture_filter = 3
+position = Vector2(0, -15)
+texture = ExtResource("2_fhkgf")

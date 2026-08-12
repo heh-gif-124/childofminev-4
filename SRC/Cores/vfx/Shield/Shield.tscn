@@ -2,12 +2,37 @@
 
 [ext_resource type="Script" uid="uid://d3dya5smmosay" path="res://SRC/Cores/vfx/Shield/shield.gd" id="1_v0480"]
 [ext_resource type="Texture2D" uid="uid://cm1pstqx003kp" path="res://Sprites/Sprites/Objects/Upgrades_vfx/Shield.png" id="1_wst4l"]
+[ext_resource type="Shader" uid="uid://b8n6srcnftfka" path="res://Shaders/Shield.gdshader" id="2_q47tw"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q47tw"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v0480"]
+noise = SubResource("FastNoiseLite_q47tw")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_um2oo"]
+shader = ExtResource("2_q47tw")
+shader_parameter/current_mana = 0.5
+shader_parameter/max_mana = 1.0
+shader_parameter/rank_advance_mana = 1.0
+shader_parameter/inset = 0.8
+shader_parameter/groove_opacity = 0.5
+shader_parameter/groove_speed = 0.1
+shader_parameter/groove_width = 0.075
+shader_parameter/groove_distance = 0.3
+shader_parameter/noise = SubResource("NoiseTexture2D_v0480")
+shader_parameter/border_color = Color(0.42352942, 0.60784316, 1, 0.4627451)
+shader_parameter/border_width = 0.1
+shader_parameter/border_speed = 0.02
+shader_parameter/glow_strength = 0.5
+shader_parameter/mana_color = Color(0, 0, 0, 0)
 
 [node name="Shield" type="Node2D" unique_id=651582913]
 script = ExtResource("1_v0480")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1920739830]
 texture_filter = 3
+material = SubResource("ShaderMaterial_um2oo")
 texture = ExtResource("1_wst4l")
 
 [node name="Timer" type="Timer" parent="." unique_id=1105132462]

@@ -15,7 +15,7 @@ func _ready() -> void:
 	
 	# Connect Godot's built-in Area2D signals to our functions
 	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
+	body_exited.connect(_on_body_exited) 
 
 
 func _unhandled_input(event: InputEvent) -> void:

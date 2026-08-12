@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://8yfhnuircgbo"]
+
+[ext_resource type="Script" uid="uid://c5ggc6ungb13p" path="res://SRC/Enemies/EnemyAI/VoidWorm/void_worm.gd" id="1_7kttn"]
+[ext_resource type="PackedScene" uid="uid://xqb1134iuxu" path="res://SRC/Objects/Projectiles/EnemyProjectile.tscn" id="2_ubnob"]
+[ext_resource type="Texture2D" uid="uid://bdqam0yvhfiea" path="res://Sprites/Sprites/Enemies/Turret_2/Embedder_head.png" id="3_7kttn"]
+[ext_resource type="Texture2D" uid="uid://wrrb11asbeco" path="res://Sprites/Sprites/Enemies/Turret_2/Embedder_body.png" id="4_7kttn"]
+[ext_resource type="Script" uid="uid://dkvtknpa8lsea" path="res://SRC/Enemies/EnemyAI/DetectRange.gd" id="5_ut8je"]
+[ext_resource type="Script" uid="uid://b86shoce52ein" path="res://SRC/Enemies/EnemyAI/State_handler.gd" id="6_3cf8l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wx21a"]
+radius = 349.00143
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sxvlh"]
+radius = 63.0
+height = 138.0
+
+[node name="VoidWorm" type="Node2D" unique_id=1306699896]
+z_index = -2
+script = ExtResource("1_7kttn")
+Bullet = ExtResource("2_ubnob")
+
+[node name="Head" type="Sprite2D" parent="." unique_id=1413482602]
+z_index = 1
+position = Vector2(0, -101)
+rotation = 1.5707964
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_7kttn")
+
+[node name="Marker2D" type="Marker2D" parent="Head" unique_id=990038531]
+position = Vector2(34.166664, -3.8146973e-06)
+
+[node name="Body" type="Sprite2D" parent="." unique_id=1291924749]
+position = Vector2(0, -104)
+scale = Vector2(1.9, 1.9)
+texture = ExtResource("4_7kttn")
+
+[node name="range_detector" type="Area2D" parent="." unique_id=491224610 node_paths=PackedStringArray("state_handler_used")]
+script = ExtResource("5_ut8je")
+state_handler_used = NodePath("../state_handler")
+metadata/_custom_type_script = "uid://dkvtknpa8lsea"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="range_detector" unique_id=1927556945]
+shape = SubResource("CircleShape2D_wx21a")
+
+[node name="state_handler" type="Node" parent="." unique_id=641749295]
+script = ExtResource("6_3cf8l")
+states = ["Idle", "Attacking"]
+metadata/_custom_type_script = "uid://b86shoce52ein"
+
+[node name="Timer" type="Timer" parent="." unique_id=181139820]
+autostart = true
+
+[node name="Collision" type="CharacterBody2D" parent="." unique_id=1873656869]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision" unique_id=1132004568]
+position = Vector2(0, -108)
+shape = SubResource("CapsuleShape2D_sxvlh")

@@ -10,7 +10,58 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7828865-1bb8-40ab-aa15-0de6e169320e" name="Changes" comment="" />
+    <list default="true" id="a7828865-1bb8-40ab-aa15-0de6e169320e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainLevels/Main.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/MainLevels/Main.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/Interact.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Cores/Interact.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/Interacted/reverie.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/Interacted/reverie.gd.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/Monoliths/Monolith_base.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/Monoliths/Monolith_base.gd.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/Monoliths/Monolith_list/Damage_L.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/Monoliths/Monolith_list/Energy_L.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/Monoliths/Monolith_list/Viscacy_L.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/UI/HUDHandler.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Cores/UI/HUDHandler.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/EnemySpawner.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/EnemySpawner.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/Globals.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/Globals.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/PassiveHandler.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/PassiveHandler.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/RoomGenerator.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/RoomGenerator.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/camera_2d.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/camera_2d.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/reset_field.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Cores/veryveryveryimportantshit/reset_field.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Cores/vfx/Shield/Shield.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Cores/vfx/Shield/Shield.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Enemies/EnemyAI/DetectRange.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Enemies/EnemyAI/DetectRange.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Enemies/EnemyAI/movement.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Enemies/EnemyAI/movement.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Enemies/enemies/RangedVoidling.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Enemies/enemies/RangedVoidling.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Levels/Level1/NormalRoom/room1.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Levels/Level1/NormalRoom/room1.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Levels/Level1/NormalRoom/room2.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Levels/Level1/NormalRoom/room2.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Levels/Level1/NormalRoom/room3.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Levels/Room_configs.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Levels/Room_configs.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Objects/Projectiles/COmponents/Collide.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Objects/Projectiles/COmponents/Collide.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Objects/Projectiles/COmponents/base.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Objects/Projectiles/COmponents/base.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Objects/Projectiles/Projectile.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Objects/Projectiles/Projectile.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Objects/Reverie.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Objects/Shelter/Shelter.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Objects/Shelter/Shelter_Inside.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Objects/Shelter/shelter.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Objects/Shelter/shelter.gd.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Objects/Shelter/shelter_inside.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Objects/Shelter/shelter_inside.gd.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Player/Player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Player/Player.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Player/PlayerMovement.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Player/PlayerMovement.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Player/player.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Player/player.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Staff/FiringHandler.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Staff/FiringHandler.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Staff/Staff.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Staff/Staff.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Staff/staff.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Staff/staff.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Upgrades/Passives/ExpMult.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Upgrades/Passives/ExpMult.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SRC/Upgrades/Skills/heal.gd" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Upgrades/Skills/heal.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sprites/Sprites/Drill/Drill.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sprites/Sprites/Drill/Drill.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sprites/Sprites/Drill/Drill_Dropped.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sprites/Sprites/Drill/Drill_Dropped.png.import" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sprites/Sprites/Objects/Upgrades_vfx/Shield.png" beforeDir="false" afterPath="$PROJECT_DIR$/Sprites/Sprites/Objects/Upgrades_vfx/Shield.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sprites/tilemaps/tilemap_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Sprites/tilemaps/tilemap_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

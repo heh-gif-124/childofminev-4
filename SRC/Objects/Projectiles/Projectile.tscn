@@ -77,13 +77,14 @@ script = ExtResource("1_qh6e5")
 
 [node name="move_handler" type="Node" parent="." unique_id=538260769]
 script = ExtResource("1_qf8o0")
+stop_threshold = 55.0
 metadata/_custom_type_script = "uid://ky8fmq4fp14s"
 
-[node name="Collider_Handler" type="Area2D" parent="." unique_id=1965135541]
+[node name="Collider_Handler" type="Area2D" parent="." unique_id=1965135541 node_paths=PackedStringArray("parent")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("2_bihh0")
-base_damage = 3.45
+parent = NodePath("..")
 metadata/_custom_type_script = "uid://fnwnh1dvkbvg"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider_Handler" unique_id=1497484637]

@@ -1,14 +1,16 @@
 extends Node
+## Node that handles room generation
 class_name room_generation
 
-@export var room_export : String
-@export var teleporter_room : PackedScene
-@export var room_spacing : float = 864.0  # Distance between rooms
+@export var room_export : String ## Room folder
+@export var teleporter_room : PackedScene ## Teleporter room
+@export var room_spacing : float = 864.0  ## Distance between rooms
+@export var special_rooms : Array[Dictionary] ## Any special room?
 var rooms : Array
 var parent_of_this_class : Node2D
 var reverie : PackedScene = load("res://SRC/Objects/Reverie.tscn")
 var platform : Array
-var initial_room_spacing = 2592.0
+var initial_room_spacing = 3456.0
 var first_room_spawned_right = false
 var first_room_spawned_left = false
 var teleporter_spawned = false

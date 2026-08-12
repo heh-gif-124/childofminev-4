@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2vu6kx07w4nd"
-path="res://.godot/imported/Drill.png-527818ce9e27ba4f717e53848e275e45.ctex"
+uid="uid://bnikxnr3tswun"
+path="res://.godot/imported/Gateway.png-4a25fbc50c6e89c0302c870b5a119172.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Sprites/Drill/Drill.png"
-dest_files=["res://.godot/imported/Drill.png-527818ce9e27ba4f717e53848e275e45.ctex"]
+source_file="res://Sprites/tilemaps/Gateway.png"
+dest_files=["res://.godot/imported/Gateway.png-4a25fbc50c6e89c0302c870b5a119172.ctex"]
 
 [params]
 

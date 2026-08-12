@@ -4,9 +4,7 @@ extends CharacterBody2D
 
 @export var start_anim : bool = false
 @export var parry_window : Timer
-var hp : float = 100.0
-var max_hp : float = 100.0
-var speed : float = 350
+@export var popoPos = Vector2()
 var mouse_pos := get_global_mouse_position()
 var has_shield : bool = false
 var block_damage_negator : int = 4
@@ -18,6 +16,8 @@ func _ready() -> void:
 	parry_window.timeout.connect(_expire_window)
 
 func _process(delta: float) -> void:
+	popoPos.x = global_position.x
+	popoPos.y = global_position.y
 	mouse_pos = get_global_mouse_position()
 
 func _input(event: InputEvent) -> void:
@@ -61,11 +61,11 @@ func _Hurt(dmg):
 	elif is_blocking == true:
 		
 		print("oh no i got blocked")
-		hp -= dmg / block_damage_negator
+		PlayerStatsManager.hp -= dmg / block_damage_negator
 		block_stamina -= 10
 		print(block_stamina)
 	else:
-		hp -= dmg
+		PlayerStatsManager.hp -= dmg
 
 func _expire_window() -> void:
 	parrying = false

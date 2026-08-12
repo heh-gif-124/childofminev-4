@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bbiyalli0kmrn"]
+
+[ext_resource type="Script" uid="uid://b2x1lv31oudiy" path="res://SRC/Objects/Monoliths/Monolith_base.gd" id="1_rmi5k"]
+[ext_resource type="Texture2D" uid="uid://dyqe31twbpwgt" path="res://Sprites/tilemaps/Monoliths/Uni_monolith.png" id="2_rmi5k"]
+[ext_resource type="Script" uid="uid://pl2xjbk5cmmo" path="res://SRC/Cores/Interact.gd" id="3_xs086"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_173sa"]
+size = Vector2(44, 63)
+
+[node name="ViscacyL" type="Node2D" unique_id=1541325972]
+script = ExtResource("1_rmi5k")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1119142780]
+texture = ExtResource("2_rmi5k")
+
+[node name="Interact_handler" type="Area2D" parent="." unique_id=1904899227]
+script = ExtResource("3_xs086")
+metadata/_custom_type_script = "uid://pl2xjbk5cmmo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact_handler" unique_id=617304395]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_173sa")
+
+[node name="Label" type="Label" parent="Interact_handler" unique_id=483269952]
+offset_left = -21.0
+offset_top = -54.0
+offset_right = 19.0
+offset_bottom = -31.0
+text = "USE"

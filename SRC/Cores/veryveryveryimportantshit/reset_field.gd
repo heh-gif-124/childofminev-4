@@ -12,3 +12,6 @@ func _process(delta: float) -> void:
 	for i in get_overlapping_bodies():
 		if i.is_in_group("Player"):
 			i.global_position = Vector2(0,-49)
+		elif i.is_in_group("Enemy"):
+			if i.has_method("_Hurt"):
+				i._Hurt("9999999999999999")

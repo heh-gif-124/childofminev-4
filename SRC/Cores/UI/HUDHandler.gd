@@ -1,28 +1,22 @@
 extends Control
-
-@onready var player = $"../../../Player"
-@onready var staff = $"../../../Staff"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
 	#HP Bar handler
-	$HealthBar.max_value = player.max_hp
-	$HealthBar.value = player.hp
+	$HealthBar.max_value = PlayerStatsManager.max_hp
+	$HealthBar.value = PlayerStatsManager.hp
 	#SP Bar handler
-	$EnergyBar.max_value = staff.max_energy
-	$EnergyBar.value = staff.energy
-	if player.hp <= 60:
+	$EnergyBar.max_value = PlayerStatsManager.max_energy
+	$EnergyBar.value = PlayerStatsManager.energy
+	if PlayerStatsManager.hp <= (50.0/100.0)*PlayerStatsManager.max_hp:
 		$TextureRect.texture = load("res://Sprites/Sprites/Player/Player_icon_slightly_hurted.png")
-	if player.hp <= 20:
+	if PlayerStatsManager.hp <= (30.0/100.0)*PlayerStatsManager.max_hp:
 		shake_node_fear($TextureRect,0.25,0.1)
 		$TextureRect.texture = load("res://Sprites/Sprites/Player/Player_icon_hurted_BADLY.png")
-	if player.hp <= 0:
+	if PlayerStatsManager.hp <= 0:
 		$TextureRect.texture = load("res://Sprites/Sprites/Player/Player_icon_dead.png")
-	if Input.is_action_just_pressed("hurt_test"):
-		shake_node_fear($TextureRect,0.5,0.35)
-		player.hp -= 15
 	
 	
 func shake_node_fear(node: Control, base_intensity: float, duration: float) -> void:

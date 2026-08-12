@@ -1,15 +1,16 @@
 extends Area2D
 class_name Collider_Handler
-@onready var parent = get_parent()
+@export var parent : Node2D
 @export var group_cant_be_hurt : String
 @export var destroy_on_collide  = true
 @export var knockback_force: float = 900.0
-@export var base_damage = 12.0
+@onready var base_damage = parent.dmg
 @export var detect_blocking = false
+@export var can_i_crit : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	body_entered.connect(func(body):
-		var calculate = Globals.calculate_final_damage(base_damage,parent.p_crit,1.0)
+		var calculate = Globals.calculate_final_damage(base_damage,parent.p_crit,parent.p_crit_dmg,can_i_crit)
 		print(calculate)
 		if body.has_method("_Hurt") and !body.is_in_group(group_cant_be_hurt):
 			var d = calculate["final"]

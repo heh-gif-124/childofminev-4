@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://dqac518siybsp"]
+
+[ext_resource type="Script" uid="uid://cvj6dlcg1ctjc" path="res://SRC/Enemies/EnemyAI/movement_2.gd" id="1_fawaw"]
+[ext_resource type="Texture2D" uid="uid://dnkffubhnglfc" path="res://Sprites/Sprites/Enemies/Lowerling/LowerlingIdle.png" id="2_6sf70"]
+[ext_resource type="Script" uid="uid://b86shoce52ein" path="res://SRC/Enemies/EnemyAI/State_handler.gd" id="3_tpcfh"]
+[ext_resource type="Script" uid="uid://dkvtknpa8lsea" path="res://SRC/Enemies/EnemyAI/DetectRange.gd" id="4_yp0bt"]
+[ext_resource type="Script" uid="uid://i2dnat5vyr6e" path="res://SRC/Cores/veryveryveryimportantshit/Despawn_handler.gd" id="5_djmld"]
+[ext_resource type="Script" uid="uid://fnwnh1dvkbvg" path="res://SRC/Objects/Projectiles/COmponents/Collide.gd" id="6_ixir0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uck4q"]
+radius = 18.0
+height = 64.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t5uf5"]
+radius = 366.00546
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uck4q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_332qe"]
+bg_color = Color(0.7533376, 0.29290795, 4.813075e-07, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uck4q"]
+size = Vector2(42, 48)
+
+[sub_resource type="Animation" id="Animation_uck4q"]
+resource_name = "Float"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 10), Vector2(0, 0), Vector2(0, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_332qe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7hnm7"]
+_data = {
+&"Float": SubResource("Animation_uck4q"),
+&"RESET": SubResource("Animation_332qe")
+}
+
+[node name="Voidling" type="CharacterBody2D" unique_id=1244030333 groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_fawaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=887556528]
+texture = ExtResource("2_6sf70")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=214510217]
+shape = SubResource("CapsuleShape2D_uck4q")
+
+[node name="state_handler" type="Node" parent="." unique_id=579921010]
+script = ExtResource("3_tpcfh")
+states = ["Idle", "Walk"]
+metadata/_custom_type_script = "uid://b86shoce52ein"
+
+[node name="range_detector" type="Area2D" parent="." unique_id=485380526 node_paths=PackedStringArray("state_handler_used")]
+visible = false
+script = ExtResource("4_yp0bt")
+state_handler_used = NodePath("../state_handler")
+metadata/_custom_type_script = "uid://dkvtknpa8lsea"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="range_detector" unique_id=455902959]
+shape = SubResource("CircleShape2D_t5uf5")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1273792862]
+position = Vector2(0, -16)
+
+[node name="despawn_handler" type="Timer" parent="." unique_id=622577373]
+script = ExtResource("5_djmld")
+metadata/_custom_type_script = "uid://i2dnat5vyr6e"
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=549432044]
+z_index = 66
+offset_left = -32.0
+offset_top = -43.0
+offset_right = 34.0
+offset_bottom = -34.0
+theme_override_styles/background = SubResource("StyleBoxFlat_uck4q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_332qe")
+show_percentage = false
+
+[node name="Collider_Handler" type="Area2D" parent="." unique_id=359526457]
+script = ExtResource("6_ixir0")
+group_cant_be_hurt = "Enemy"
+destroy_on_collide = false
+metadata/_custom_type_script = "uid://fnwnh1dvkbvg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider_Handler" unique_id=1054196037]
+shape = SubResource("RectangleShape2D_uck4q")
+disabled = true
+
+[node name="MainAnimation" type="AnimationPlayer" parent="." unique_id=2048386485]
+libraries/ = SubResource("AnimationLibrary_7hnm7")

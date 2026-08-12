@@ -9,23 +9,18 @@ var boss_progress = 0 # Teleporter Progress reaches 100, then boss progress star
 var teleporter_progress = 0
 var game_started = false
 #Stats
-var base_max_hp = 50
-var base_crit_rate = 45
-var base_crit_dmg = 75
 var current_exp = 0
-var moneh = 0
 var scene_to_be_loaded : String
-var expmult = 1
 var dmg_mono = 0
 var mp_mono = 0
 var hp_mono = 0
-func calculate_final_damage(dmg,crit_chance:float,crit_dmg):
+func calculate_final_damage(dmg:float,crit_chance:float,crit_dmg:float,can_crit:bool=true):
 	var roll = randi_range(1,100)
 	var is_crit: bool = roll <= crit_chance
 	var multiplier: float = 1.0 + (crit_dmg/100.0)
 	var normal_dmg = dmg
-	var critted_dmg = dmg * multiplier
-	var final = critted_dmg if is_crit else normal_dmg
+	var critted_dmg : float = dmg * multiplier
+	var final = critted_dmg if is_crit and can_crit else normal_dmg
 	return{
 		"is_crit" : is_crit,
 		"normal_dmg" : normal_dmg,

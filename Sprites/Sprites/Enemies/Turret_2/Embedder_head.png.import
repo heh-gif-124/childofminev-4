@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sv8dnjytea7w"
-path="res://.godot/imported/Drill_Dropped.png-0f0a37135f0c2269bba06d7dec11571c.ctex"
+uid="uid://bdqam0yvhfiea"
+path="res://.godot/imported/Embedder_head.png-4743c703a9e764a9b1951e45f76990d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Sprites/Drill/Drill_Dropped.png"
-dest_files=["res://.godot/imported/Drill_Dropped.png-0f0a37135f0c2269bba06d7dec11571c.ctex"]
+source_file="res://Sprites/Sprites/Enemies/Turret_2/Embedder_head.png"
+dest_files=["res://.godot/imported/Embedder_head.png-4743c703a9e764a9b1951e45f76990d3.ctex"]
 
 [params]
 

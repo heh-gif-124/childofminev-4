@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dql5quj1rq08s"]
 
-[ext_resource type="Script" uid="uid://b2x1lv31oudiy" path="res://SRC/Cores/Monoliths/Monolith_base.gd" id="1_vsswj"]
+[ext_resource type="Script" uid="uid://b2x1lv31oudiy" path="res://SRC/Objects/Monoliths/Monolith_base.gd" id="1_vsswj"]
 [ext_resource type="Texture2D" uid="uid://le0ymeia8voh" path="res://Sprites/tilemaps/Monoliths/energy_increase_monolith.png" id="2_vsswj"]
 [ext_resource type="Script" uid="uid://pl2xjbk5cmmo" path="res://SRC/Cores/Interact.gd" id="3_52c7o"]
 
@@ -9,6 +9,7 @@ size = Vector2(44, 63)
 
 [node name="ViscacyL" type="Node2D" unique_id=1541325972]
 script = ExtResource("1_vsswj")
+id = "MP"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1119142780]
 texture = ExtResource("2_vsswj")
